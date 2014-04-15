@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/models/blog_model.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/controllers/blog_controller.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/store.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/blogs.php</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/templates/application.hbs</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/views/blog_view.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/routes/blog_route.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/templates/blog.hbs</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/router.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/app.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/index.html</file>
+        </group>
+    </open-files>
+</project-private>
