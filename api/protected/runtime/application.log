@@ -1,0 +1,47 @@
+2014/04/17 19:33:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "read".' in /home/adminuser/NetBeansProject/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(270): CController->missingAction('read')
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('read')
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/read')
+#3 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/contact
+HTTP_REFERER=http://api.localhost/site/page/view/about
+---
+2014/04/17 19:33:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "read".' in /home/adminuser/NetBeansProject/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(270): CController->missingAction('read')
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('read')
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/read')
+#3 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/index
+HTTP_REFERER=http://api.localhost/site/page/view/about
+---
+2014/04/18 07:51:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "blogs".' in /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs')
+#1 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/blogs
+---
+2014/04/18 07:54:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "blogs".' in /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs')
+#1 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/18 07:54:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "blogs".' in /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs')
+#1 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/blogs
+---
