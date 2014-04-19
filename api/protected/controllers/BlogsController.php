@@ -13,7 +13,7 @@ class BlogsController extends Controller {
     const JSON_RESPONSE_ROOT_PLURAL = 'blogs';
 
     public function actionIndex() {
-        echo '{id:0,"blog_title":"asdfasdfasdf"}';
+               echo  '{"' . self::JSON_RESPONSE_ROOT_PLURAL . '":[{"id":1,"blog_title":"kkkk"},{"id":2,"blog_title":"blog_title2"}]}';
     }
 
     public function actionCreate() {
@@ -21,7 +21,10 @@ class BlogsController extends Controller {
     }
 
     public function actionRead() {
-
+        
+        //     $this->sendResponse(204, '{"' . self::JSON_RESPONSE_ROOT_SINGLE . '":{"id":1,"blog_title":"blog_title"}}');
+     echo   '{"' . self::JSON_RESPONSE_ROOT_SINGLE . ':{"id":1,"blog_title":"blog_title"}}';
+       
     }
 
     public function actionUpdate() {

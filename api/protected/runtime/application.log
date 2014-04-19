@@ -45,3 +45,51 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/blogs
 ---
+2014/04/18 17:31:38 [error] [exception.CException] exception 'CException' with message 'BlogsController and its behaviors do not have a method or closure named "sendResponse".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(25): CComponent->__call('sendResponse', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(25): BlogsController->sendResponse(204, '{"blog:{"id":1,...')
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionRead()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('read')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/read')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs/1
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/18 17:31:41 [error] [exception.CException] exception 'CException' with message 'BlogsController and its behaviors do not have a method or closure named "sendResponse".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(25): CComponent->__call('sendResponse', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(25): BlogsController->sendResponse(204, '{"blog:{"id":1,...')
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionRead()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('read')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/read')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs/1
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/18 17:31:44 [error] [exception.CException] exception 'CException' with message 'BlogsController and its behaviors do not have a method or closure named "sendResponse".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(25): CComponent->__call('sendResponse', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(25): BlogsController->sendResponse(204, '{"blog:{"id":1,...')
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionRead()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('read')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/read')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs/1
+HTTP_REFERER=http://localhost:9000/
+---

@@ -138,6 +138,7 @@ module.exports = function (grunt) {
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 httpFontsPath: '/styles/fonts',
+              //  libDir:'<%= yeoman.app %>/lib',
                 relativeAssets: false
             },
             dist: {},
@@ -165,6 +166,7 @@ module.exports = function (grunt) {
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
                         '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                        '<%= yeoman.dist %>/lib/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/fonts/*'
                     ]
                 }
@@ -368,7 +370,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        'replace:dist',
+        'replace:app',
         'useminPrepare',
         'concurrent:dist',
         'neuter:app',
