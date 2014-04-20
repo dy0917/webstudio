@@ -8,7 +8,14 @@ function getRestAPIURL(){
 //    console.log(api_url);
 //    return api_url;
     var api_url = document.domain;
+  if(api_url.indexOf("www.") > -1)
+  {
+      api_url = api_url.replace("www.","");
+  }
+    
+    
     api_url = "http://api." + api_url;
+    console.log(api_url);
     return api_url;
 }
 
