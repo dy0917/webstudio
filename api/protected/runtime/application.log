@@ -292,3 +292,271 @@ Stack trace:
 #10 {main}
 REQUEST_URI=/blogs/tt
 ---
+2014/04/20 18:33:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "options".' in /home/adminuser/NetBeansProject/yii/framework/web/CController.php:483
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(270): CController->missingAction('options')
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('options')
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/options')
+#3 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 20:58:06 [error] [exception.CException] exception 'CException' with message 'BlogsController and its behaviors do not have a method or closure named "actionoptions".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): CComponent->__call('actionoptions', Array)
+#1 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionoptions()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('options')
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/options')
+#7 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 21:25:56 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:21)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (21)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 21:29:23 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:21)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (21)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 21:29:37 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:21)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (21)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 21:56:30 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "getPost".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CComponent->__call('getPost', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CWebApplication->getPost()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionCreate()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/create')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 21:56:38 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "getPost".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CComponent->__call('getPost', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CWebApplication->getPost()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionCreate()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/create')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 21:56:54 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "getPost".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CComponent->__call('getPost', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CWebApplication->getPost()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionCreate()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/create')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 21:56:54 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "getPost".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CComponent->__call('getPost', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CWebApplication->getPost()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionCreate()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/create')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 21:56:55 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "getPost".' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CComponent->__call('getPost', Array)
+#1 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(23): CWebApplication->getPost()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionCreate()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#7 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs/create')
+#8 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---
+2014/04/20 22:35:00 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:27)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (27)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 22:35:15 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:27)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (27)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 22:36:15 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:27)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (27)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 22:36:30 [error] [php] Undefined index: title (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:27)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (27)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 22:38:12 [error] [php] Undefined index: body (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:28)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (28)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 23:03:00 [error] [php] var_export does not handle circular references (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:17)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#6 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (17)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 23:04:09 [error] [php] error_log() expects parameter 1 to be string, array given (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:17)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#6 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (17)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 23:04:53 [error] [php] var_export does not handle circular references (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:17)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#6 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (17)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/20 23:10:24 [error] [php] var_export does not handle circular references (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:17)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#6 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (17)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/21 05:20:44 [error] [php] Use of undefined constant JSON_RESPONSE_ROOT_PLURAL - assumed 'JSON_RESPONSE_ROOT_PLURAL' (/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php:18)
+Stack trace:
+#0 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): BlogsController->runAction()
+#1 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): BlogsController->runActionWithFilters()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): BlogsController->run()
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CWebApplication->run()
+REQUEST_URI=/blogs
+in /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php (18)
+in /home/adminuser/NetBeansProject/webstudio/api/index.php (13)
+2014/04/21 05:21:49 [error] [exception.CException] exception 'CException' with message 'Property "BlogsController.JSON_RESPONSE_ROOT_PLURAL" is not defined.' in /home/adminuser/NetBeansProject/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php(18): CComponent->__get('JSON_RESPONSE_R...')
+#1 /home/adminuser/NetBeansProject/yii/framework/web/actions/CInlineAction.php(49): BlogsController->actionIndex()
+#2 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /home/adminuser/NetBeansProject/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(282): CController->run('')
+#6 /home/adminuser/NetBeansProject/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('blogs')
+#7 /home/adminuser/NetBeansProject/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /home/adminuser/NetBeansProject/webstudio/api/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/blogs
+HTTP_REFERER=http://localhost:9000/
+---

@@ -1,10 +1,10 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
-header('Content-type: *');
-header('Access-Control-Request-Method: *');
-header('Access-Control-Allow-Methods: PUT, POST, OPTIONS,GET');
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+//header("Access-Control-Allow-Origin: *");
+//header('Content-type: *');
+//header('Access-Control-Request-Method: *');
+//header('Access-Control-Allow-Methods: PUT, POST, OPTIONS, GET');
+//header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
 class BlogsController extends Controller {
 
@@ -12,42 +12,45 @@ class BlogsController extends Controller {
     const JSON_RESPONSE_ROOT_PLURAL = 'blogs';
 
     public function actionIndex() {
-        echo '{"' . self::JSON_RESPONSE_ROOT_PLURAL . '":[{"id":1,"blog_title":"kkkk"},{"id":2,"blog_title":"blog_title2"}]}';
+
+        $models = Blog::model()->findAll();
+    
+      $json=$this->arrtoJson(self::JSON_RESPONSE_ROOT_PLURAL,$models);
+
+        $this->sendResponse(200,$json);
     }
 
     public function actionCreate() {
-        
+
+        $request_json = file_get_contents('php://input');
+        $request = CJSON::decode($request_json, true);
+        $post = $request['blog'];
+        $model = new Blog;
+        $model->title = $post['title'];
+        $model->body = $post['body'];
+        $model->author = $post['author'];
+        if ($model->validate()) {
+            $model->save();
+            $this->sendResponse(204);
+        } else {
+
+            $this->sendResponse(500);
+        }
+
     }
 
     public function actionRead() {
 
-        
-        $model = new Blog;
-$model->title = "dafasdfasdf";
-$model->body = "asdfasdfasdf";
-$model->author = "1";
-if ($model->validate()){
-    $model->save();
-} else {
-    print_r($model->errors);
-}
-        
-//        $con = mysqli_connect("23.229.135.6", "dy0917", "Huang003006", "webstudio");
-//// Check connection
-//        if (mysqli_connect_errno()) {
-//            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+
+//        $model = new Blog;
+//        $model->title = "dafasdfasdf";
+//        $model->body = "asdfasdfasdf";
+//        $model->author = "1";
+//        if ($model->validate()) {
+//            $model->save();
+//        } else {
+//            print_r($model->errors);
 //        }
-//
-//        $result = mysqli_query($con, "SELECT * FROM blogs");
-//
-//        while ($row = mysqli_fetch_array($result)) {
-//            echo $row['FirstName'] . " " . $row['LastName'];
-//            echo "<br>";
-//        }
-//
-//        mysqli_close($con);
-        //     $this->sendResponse(200,  '{"' . self::JSON_RESPONSE_ROOT_SINGLE . ':{"id":1,"blog_title":"asdfasd"}}');
-        //echo   '{"' . self::JSON_RESPONSE_ROOT_SINGLE . ':{"id":1,"blog_title":"blog_title"}}';
     }
 
     public function actionUpdate() {

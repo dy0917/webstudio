@@ -1,28 +1,36 @@
 <?php
+
 /**
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
  */
-class Controller extends CController
-{
-	/**
-	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
-	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
-	 */
-	public $layout='//layouts/column1';
-	/**
-	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
-	 */
-	public $menu=array();
-	/**
-	 * @var array the breadcrumbs of the current page. The value of this property will
-	 * be assigned to {@link CBreadcrumbs::links}. Please refer to {@link CBreadcrumbs::links}
-	 * for more details on how to specify this property.
-	 */
-	public $breadcrumbs=array();
-        
-        
-         protected function getInputAsJson() {
+header("Access-Control-Allow-Origin: *");
+header('Content-type: *');
+header('Access-Control-Request-Method: *');
+header('Access-Control-Allow-Methods: PUT, POST, OPTIONS, GET');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+
+class Controller extends CController {
+
+    /**
+     * @var string the default layout for the controller view. Defaults to '//layouts/column1',
+     * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
+     */
+    public $layout = '//layouts/column1';
+
+    /**
+     * @var array context menu items. This property will be assigned to {@link CMenu::items}.
+     */
+    public $menu = array();
+
+    /**
+     * @var array the breadcrumbs of the current page. The value of this property will
+     * be assigned to {@link CBreadcrumbs::links}. Please refer to {@link CBreadcrumbs::links}
+     * for more details on how to specify this property.
+     */
+    public $breadcrumbs = array();
+
+    protected function getInputAsJson() {
         return CJSON::decode(file_get_contents('php://input'));
     }
 
@@ -96,7 +104,27 @@ class Controller extends CController
         return (isset($codes[$status])) ? $codes[$status] : '';
     }
 
+    public function actionOptions() {
+        echo "";
+        Yii::app()->end();
+        // this->sendResponse();
+    }
+
+    public function arrtoJson($modelType,$modelList) {
+        $arr = array();
+        foreach ($modelList as $model) {
+            //  $arr[$t->id] = $t->attributes;
+            array_push($arr, $model->attributes);
+        }
+        
+        
+        $json='{"' . $modelType . '":'.json_encode($arr).'}';
+        
+        return $json;
+    }
+
     public function getTest() {
         return 'test';
     }
+
 }

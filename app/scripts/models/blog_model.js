@@ -5,7 +5,12 @@
  */
 
 
-Webstudio.Blog= DS.Model.extend({
-        blog_title: DS.attr('string')
+Webstudio.Blog = DS.Model.extend({
+    title: DS.attr('string'),
+    body: DS.attr('string'),
+    type: DS.attr('string'),
+    author: DS.attr('string'),
+    created: DS.attr('string'),
+    last_update: DS.attr('string')
 
-    });
+});
