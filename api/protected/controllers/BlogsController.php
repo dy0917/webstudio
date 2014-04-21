@@ -1,0 +1,70 @@
+<?php
+
+//header("Access-Control-Allow-Origin: *");
+//header('Content-type: *');
+//header('Access-Control-Request-Method: *');
+//header('Access-Control-Allow-Methods: PUT, POST, OPTIONS, GET');
+//header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+
+class BlogsController extends Controller {
+
+    const JSON_RESPONSE_ROOT_SINGLE = 'blog';
+    const JSON_RESPONSE_ROOT_PLURAL = 'blogs';
+
+    public function actionIndex() {
+
+        $models = Blog::model()->findAll();
+    
+      $json=$this->arrtoJson(self::JSON_RESPONSE_ROOT_PLURAL,$models);
+
+        $this->sendResponse(200,$json);
+    }
+
+    public function actionCreate() {
+
+        $request_json = file_get_contents('php://input');
+        $request = CJSON::decode($request_json, true);
+        $post = $request['blog'];
+        $model = new Blog;
+        $model->title = $post['title'];
+        $model->body = $post['body'];
+        $model->author = $post['author'];
+        if ($model->validate()) {
+            $model->save();
+            $this->sendResponse(204);
+        } else {
+
+            $this->sendResponse(500);
+        }
+
+    }
+
+    public function actionRead() {
+
+
+//        $model = new Blog;
+//        $model->title = "dafasdfasdf";
+//        $model->body = "asdfasdfasdf";
+//        $model->author = "1";
+//        if ($model->validate()) {
+//            $model->save();
+//        } else {
+//            print_r($model->errors);
+//        }
+    }
+
+    public function actionUpdate() {
+        
+    }
+
+    public function actionDelete() {
+        
+    }
+
+    public function actionTest() {
+        echo "asdfasdfasdf";
+    }
+
+}
+
+?>

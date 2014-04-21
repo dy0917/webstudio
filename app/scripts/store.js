@@ -1,13 +1,14 @@
-Webstudio.Store = DS.Store.extend({
-    adapter: DS.FixtureAdapter.create()
+//Webstudio.ApplicationAdapter = DS.FixtureAdapter;
+ console.log( getRestAPIURL());
+Webstudio.store = DS.Store.create({
+  
+    adapter: DS.RESTAdapter.create({
+        bulkCommit: false,
+        url: getRestAPIURL()
+
+    })
 });
 
-
-//Webstudio.store = DS.Store.create({
-//    adapter: DS.RESTAdapter.create({
-//        bulkCommit: false,
-//        url:'http://localhost:9000/'
-//
-//    })
-//});
-
+DS.RESTAdapter.reopen({
+  host: getRestAPIURL()
+});

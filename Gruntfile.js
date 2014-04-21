@@ -1,4 +1,4 @@
-// Generated on 2014-04-11 using generator-ember 0.6.2
+// Generated on 2014-04-17 using generator-ember 0.8.3
 'use strict';
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
@@ -30,14 +30,6 @@ module.exports = function (grunt) {
             emberTemplates: {
                 files: '<%= yeoman.app %>/templates/**/*.hbs',
                 tasks: ['emberTemplates']
-            },
-            coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
-            },
-            coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
-                tasks: ['coffee:test']
             },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -80,8 +72,8 @@ module.exports = function (grunt) {
                 options: {
                     middleware: function (connect) {
                         return [
-                            mountFolder(connect, '.tmp'),
-                            mountFolder(connect, 'test')
+                            mountFolder(connect, 'test'),
+                            mountFolder(connect, '.tmp')
                         ];
                     }
                 }
@@ -116,7 +108,8 @@ module.exports = function (grunt) {
         },
         jshint: {
             options: {
-                jshintrc: '.jshintrc'
+                jshintrc: '.jshintrc',
+                reporter: require('jshint-stylish')
             },
             all: [
                 'Gruntfile.js',
@@ -133,26 +126,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        coffee: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/scripts',
-                    ext: '.js'
-                }]
-            },
-            test: {
-                files: [{
-                    expand: true,
-                    cwd: 'test/spec',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/spec',
-                    ext: '.js'
-                }]
-            }
-        },
         compass: {
             options: {
                 sassDir: '<%= yeoman.app %>/styles',
@@ -165,6 +138,7 @@ module.exports = function (grunt) {
                 httpImagesPath: '/images',
                 httpGeneratedImagesPath: '/images/generated',
                 httpFontsPath: '/styles/fonts',
+              //  libDir:'<%= yeoman.app %>/lib',
                 relativeAssets: false
             },
             dist: {},
@@ -192,13 +166,14 @@ module.exports = function (grunt) {
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
                         '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                        '<%= yeoman.dist %>/lib/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/fonts/*'
                     ]
                 }
             }
         },
         useminPrepare: {
-            html: '<%= yeoman.app %>/index.html',
+            html: '.tmp/index.html',
             options: {
                 dest: '<%= yeoman.dist %>'
             }
@@ -261,47 +236,80 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        replace: {
+          app: {
+            options: {
+              variables: {
+                ember: 'bower_components/ember/ember.js',
+                ember_data: 'bower_components/ember-data/ember-data.js'
+              }
+            },
+            files: [
+              {src: '<%= yeoman.app %>/index.html', dest: '.tmp/index.html'}
+            ]
+          },
+          dist: {
+            options: {
+              variables: {
+                ember: 'bower_components/ember/ember.prod.js',
+                ember_data: 'bower_components/ember-data/ember-data.prod.js'
+              }
+            },
+            files: [
+              {src: '<%= yeoman.app %>/index.html', dest: '.tmp/index.html'}
+            ]
+          }
+        },
         // Put files not handled in other tasks here
         copy: {
+            fonts: {
+                files: [
+                    { 
+                        expand: true,
+                        flatten: true,
+                        filter: 'isFile',
+                        cwd: '<%= yeoman.app %>/bower_components/',
+                        dest: '<%= yeoman.app %>/styles/fonts/',
+                        src: [ 
+                            'bootstrap-sass/dist/fonts/**', // Bootstrap
+                            'font-awesome/fonts/**' // Font-Awesome
+                        ]
+                    }
+                ]
+            },
             dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= yeoman.app %>',
-                    dest: '<%= yeoman.dist %>',
-                    src: [
-                        '*.{ico,txt}',
-                        '.htaccess',
-                        'images/{,*/}*.{webp,gif}',
-                        'styles/fonts/*'
-                    ]
-                }]
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.app %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '*.{ico,txt}',
+                            '.htaccess',
+                            'images/{,*/}*.{webp,gif}',
+                            'styles/fonts/*'
+                        ]
+                    }
+                ]
             }
         },
         concurrent: {
             server: [
                 'emberTemplates',
-                'coffee:dist',
                 'compass:server'
             ],
             test: [
                 'emberTemplates',
-                'coffee',
                 'compass'
             ],
             dist: [
                 'emberTemplates',
-                'coffee',
                 'compass:dist',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
             ]
-        },
-        karma: {
-            unit: {
-                configFile: 'karma.conf.js'
-            }
         },
         emberTemplates: {
             options: {
@@ -320,7 +328,7 @@ module.exports = function (grunt) {
             app: {
                 options: {
                     filepathTransform: function (filepath) {
-                        return 'app/' + filepath;
+                        return yeomanConfig.app + '/' + filepath;
                     }
                 },
                 src: '<%= yeoman.app %>/scripts/app.js',
@@ -330,14 +338,21 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('server', function (target) {
+        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+        grunt.task.run(['serve:' + target]);
+    });
+
+    grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
 
         grunt.task.run([
             'clean:server',
+            'replace:app',
             'concurrent:server',
             'neuter:app',
+            'copy:fonts',
             'connect:livereload',
             'open',
             'watch'
@@ -346,6 +361,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'replace:app',
         'concurrent:test',
         'connect:test',
         'neuter:app',
@@ -354,6 +370,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'replace:app',
         'useminPrepare',
         'concurrent:dist',
         'neuter:app',

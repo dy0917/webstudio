@@ -4,16 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/models/blog_model.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/controllers/blog_controller.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/store.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/blogs.php</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/templates/application.hbs</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/views/blog_view.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/routes/blog_route.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/templates/blog.hbs</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/controllers/blogs_controller.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/views/BlogNew_view.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/api/protected/components/Controller.php</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/templates/blogNew.hbs</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/controllers/blogNew_controller.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/routes/blogs_route.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/templates/blogs.hbs</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/routes/blognew_route.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/routes/index_route.js</file>
             <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/router.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/app.js</file>
-            <file>file:/home/adminuser/NetBeansProject/webstudio/app/index.html</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/app/scripts/routes/home_route.js</file>
+            <file>file:/home/adminuser/NetBeansProject/webstudio/api/protected/controllers/BlogsController.php</file>
         </group>
     </open-files>
 </project-private>

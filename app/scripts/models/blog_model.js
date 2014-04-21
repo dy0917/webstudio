@@ -5,24 +5,12 @@
  */
 
 
-Webstudio.Blog = DS.Model.extend({        
-    blog_id: DS.attr('string'),
-    book_title: DS.attr('string'),
-    blog_body: DS.attr('string'),
-    blog_type: DS.attr('string'),
-    timestamp: DS.attr('string'),
-    author: DS.attr('string')
-});
+Webstudio.Blog = DS.Model.extend({
+    title: DS.attr('string'),
+    body: DS.attr('string'),
+    type: DS.attr('string'),
+    author: DS.attr('string'),
+    created: DS.attr('string'),
+    last_update: DS.attr('string')
 
-Webstudio.Blog.reopenClass({
-    getAllBlog: function() {
-        return $.ajax({
-            url: "http://api.localhost/blogs.php",
-            type: "POST",
-            data: JSON.stringify({})
-        }).then(function(response) {
-            console.log(response);
-            return response;
-        });
-    }
 });
