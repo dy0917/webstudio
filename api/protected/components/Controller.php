@@ -123,6 +123,17 @@ class Controller extends CController {
         return $json;
     }
 
+      public function objtoJson($modelType,$model) {
+       
+        
+        
+        $json='{"' . $modelType . '":'.json_encode( $model->attributes).'}';
+        
+        return $json;
+    }
+    
+    
+    
     public function getTest() {
         return 'test';
     }

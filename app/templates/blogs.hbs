@@ -1,13 +1,16 @@
 <div class="col-md-3">
-                    <div class="well sidebar-nav">
-                        <strong>Colors</strong>
-                        <ul class="list-group">
-                            {{content.length}}
-   {{#each content}}
-    <li> {{title}}</li>
-
-    {{/each}}
-                        </ul>
-                    </div>
-                </div>
-{{outlet}}
+    <div class="well sidebar-nav">
+        <strong>Colors</strong>
+        <ul class="list-group">
+            {{content.length}}
+            {{#each content}}
+            {{#link-to 'blog' this}}
+            <li> {{title}}</li>
+            {{/link-to}}
+            
+           <div> {{#link-to 'blogEdit' this}}edit{{/link-to}}</div>
+          <div>delete</div>
+            {{/each}}
+        </ul>
+    </div>
+</div>

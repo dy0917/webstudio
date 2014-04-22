@@ -40,8 +40,14 @@ class BlogsController extends Controller {
     }
 
     public function actionRead() {
+// $request_json = file_get_contents('php://input');
+           $temp = explode("/", $_SERVER['REQUEST_URI']);
+            $id = $temp [sizeof($temp) - 1];
+        
+         $model = Blog::model()->find($id);
+         $json=$this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE,$model);
 
-
+          $this->sendResponse(200,$json);
 //        $model = new Blog;
 //        $model->title = "dafasdfasdf";
 //        $model->body = "asdfasdfasdf";

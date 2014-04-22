@@ -18,6 +18,11 @@ initial:function()
 {
      console.log(this.get('content'));
 },
+
+redirect:function(id)
+{
+     //   this.transitionToRoute('profile', model);
+}
    
 //   filteredContent: (function() {
 //    return this.get('content').filter(function(item, index) {

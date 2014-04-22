@@ -6,7 +6,6 @@ Webstudio.BlogsRoute = Ember.Route.extend({
    //  if     (controller.get('content').get('length')===0){
          //  controller.get('content').clear;
          var blogs = this.store.filter('blog', function (blog) {
-             console.log(blog);
 				return blog.get('isValid');
 			});
          
