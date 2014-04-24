@@ -1,8 +1,11 @@
 Webstudio.BlogEditRoute = Ember.Route.extend({
-   setupController: function(controller, arr) {
- controller.set('content', arr);
-  },
-      renderTemplate: function() {
-    this.render('blogNew');
-  }
+    setupController: function(controller, model) {
+       var controller = this.controllerFor("blogNew");
+      // console.log(controller);
+       controller.send('setModel',model);
+    },
+    
+    renderTemplate: function() {
+        this.render('blogNew');
+    }
 });

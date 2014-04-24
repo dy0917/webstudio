@@ -7,20 +7,25 @@
 
 Webstudio.BlogNewController = Ember.Controller.extend({
     blog: "",
-    init: function()
-    {
-        //  console.log("BlogNewController");
+    actions: {
+        init: function()
+        {    
+          
+        },
+        setModel: function(model)
 
-        this.blog = this.store.createRecord('blog', {
-            title: 'Rails is Omakase',
-            body: 'Lorem ipsum'
-        });
-    },
-    submit: function()
-    {
-        
-        this.blog.save();
-        
-    }.observes('isCompleted')
+        {
+            this.blog = model;
+        },
+        submit: function()
+        {
 
+            this.blog.save();
+            
+            
+           this.set('blog',null);
+           this.transitionToRoute('blogs');
+      
+        }.observes('isCompleted')
+    }
 });

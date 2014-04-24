@@ -50,9 +50,9 @@ return array(
             )
         ),
         /*
-        'db' => array(
-            'connectionString' => 'sqlite:' . dirname(__FILE__) . '/../data/testdrive.db',
-        ), 
+          'db' => array(
+          'connectionString' => 'sqlite:' . dirname(__FILE__) . '/../data/testdrive.db',
+          ),
          */
         // uncomment the following to use a MySQL database
         'db' => array(
@@ -61,7 +61,7 @@ return array(
             'username' => 'root',
             'password' => 'Pa55word',
             'charset' => 'utf8',
-            'enableProfiling'=>true,
+            'enableProfiling' => true,
             'enableParamLogging' => true,
         ),
         'errorHandler' => array(
@@ -83,6 +83,17 @@ return array(
              */
             ),
         ),
+        'session' => array(
+            'sessionName' => 'WebSession',
+            'class' => 'CDbHttpSession',
+            'autoCreateSessionTable' => true,
+            'connectionID' => 'db',
+            'sessionTableName' => 'MySessionTable',
+          //  'useTransparentSessionID' => ($_POST['PHPSESSID']) ? true : false,
+            'autoStart' => 'false',
+            'cookieMode' => 'only',
+            'timeout' => 300
+        )
     ),
     // application-level parameters that can be accessed
     // using Yii::app()->params['paramName']

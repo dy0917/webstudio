@@ -16,12 +16,17 @@ Webstudio.BlogsController = Ember.ArrayController.extend({
 },
 initial:function()
 {
-     console.log(this.get('content'));
+
 },
 
 redirect:function(id)
 {
      //   this.transitionToRoute('profile', model);
+},
+delete:function(model)
+{
+    model.destroyRecord();
+   
 }
    
 //   filteredContent: (function() {

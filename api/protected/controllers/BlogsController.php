@@ -14,10 +14,10 @@ class BlogsController extends Controller {
     public function actionIndex() {
 
         $models = Blog::model()->findAll();
-    
-      $json=$this->arrtoJson(self::JSON_RESPONSE_ROOT_PLURAL,$models);
 
-        $this->sendResponse(200,$json);
+        $json = $this->arrtoJson(self::JSON_RESPONSE_ROOT_PLURAL, $models);
+
+        $this->sendResponse(200, $json);
     }
 
     public function actionCreate() {
@@ -26,9 +26,7 @@ class BlogsController extends Controller {
         $request = CJSON::decode($request_json, true);
         $post = $request['blog'];
         $model = new Blog;
-        $model->title = $post['title'];
-        $model->body = $post['body'];
-        $model->author = $post['author'];
+       $model->setAttributes($post);
         if ($model->validate()) {
             $model->save();
             $this->sendResponse(204);
@@ -36,35 +34,45 @@ class BlogsController extends Controller {
 
             $this->sendResponse(500);
         }
-
     }
 
     public function actionRead() {
 // $request_json = file_get_contents('php://input');
-           $temp = explode("/", $_SERVER['REQUEST_URI']);
-            $id = $temp [sizeof($temp) - 1];
-        
-         $model = Blog::model()->find($id);
-         $json=$this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE,$model);
+        $temp = explode("/", $_SERVER['REQUEST_URI']);
+        $id = $temp [sizeof($temp) - 1];
 
-          $this->sendResponse(200,$json);
-//        $model = new Blog;
-//        $model->title = "dafasdfasdf";
-//        $model->body = "asdfasdfasdf";
-//        $model->author = "1";
-//        if ($model->validate()) {
-//            $model->save();
-//        } else {
-//            print_r($model->errors);
-//        }
+        $model = Blog::model()->findByPk($id);
+        $json = $this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE, $model);
+
+        $this->sendResponse(200, $json);
     }
 
     public function actionUpdate() {
+        $request_json = file_get_contents('php://input');
+        $request = CJSON::decode($request_json, true);
+        $blog = $request['blog'];
+        $temp = explode("/", $_SERVER['REQUEST_URI']);
+        $id = $temp [sizeof($temp) - 1];
+        $model = Blog::model()->findByPk($id);
         
+        
+        
+        $model->setAttributes($blog);
+
+        if ($model->validate()) {
+            $model->save(false);
+            $this->sendResponse(204);
+        } else {
+
+            $this->sendResponse(500);
+        }
     }
 
     public function actionDelete() {
-        
+        $temp = explode("/", $_SERVER['REQUEST_URI']);
+        $id = $temp [sizeof($temp) - 1];
+        $post = Blog::model()->findByPk($id); // assuming there is a post whose ID is 10
+        $post->delete();
     }
 
     public function actionTest() {

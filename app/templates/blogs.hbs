@@ -9,7 +9,7 @@
             {{/link-to}}
             
            <div> {{#link-to 'blogEdit' this}}edit{{/link-to}}</div>
-          <div>delete</div>
+          <div {{action "delete" this}} >delete</div>
             {{/each}}
         </ul>
     </div>
