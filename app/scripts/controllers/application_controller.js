@@ -9,6 +9,7 @@ Webstudio.ApplicationController = Ember.Controller.extend({
     username: "",
     password: "",
     loginUser: null,
+    islogin:false,
     actions: {
         init: function()
         {
@@ -42,8 +43,10 @@ Webstudio.ApplicationController = Ember.Controller.extend({
                 var that = this;
                 var user = this.store.find('user', t.id);
                 user.then(function() {
+                    
                     that.set("loginUser", user);
-                    console.log(that.get("loginUser").get("displayname"));
+                    that.set("islogin", true);
+                  
                 });
 
             }

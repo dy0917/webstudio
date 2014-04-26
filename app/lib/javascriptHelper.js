@@ -152,7 +152,9 @@ function ReplaceContentInContainer(matchClass, content)
 }
 
 Handlebars.registerHelper('exists', function(variable, options) {
-    if (typeof variable !== 'undefined') {
+    console.log("asdffffa");
+    console.log(variable);
+    if (typeof variable !== null) {
         return options.fn(this);
     } else {
         return options.inverse(this);
