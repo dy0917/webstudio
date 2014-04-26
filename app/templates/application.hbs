@@ -1,43 +1,50 @@
 <div>
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#/home">home</a></li>
-        <li><a href="#/blogs">blogs</a></li>
-   
-      </ul>
-  
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/blog/new">New Blog</a></li>
-        
-        <li>
-            <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal">login</button>
-        </li>
-        
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#/home">home</a></li>
+                    <li><a href="#/blogs">blogs</a></li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/blog/new">New Blog</a></li>
+          
+                    
+                              {{#exists loginuser}}
+                                 <li>
+                        <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#myModal">login</button>
+                    </li>
+                    {{else}}
+                     <li><a href="#">New user</a></li>
+           
+                    {{/exists}}
+                 
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
     <div class="container" id="main">
         <div class="row">
             <div>
-                
+
                 <div class="col-md-9">
                     {{outlet}}
-                  
+
                 </div>
             </div>
         </div>
@@ -45,32 +52,32 @@
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Login</h4>
-      </div>
-      <div class="modal-body">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
 
-          <form role="form">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-       {{input type="email" value=username class="form-control" placeholder="Enter email"}}
-   
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-       {{input type="password" value=password class="form-control" placeholder="Password"}}
-       
-  </div>
-</form>
-          
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">canel</button>
-        <button type="button" class="btn btn-primary"{{action "login"}}>login</button>
-      </div>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        {{input type="email" value=username class="form-control" placeholder="Enter email"}}
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        {{input type="password" value=password class="form-control" placeholder="Password"}}
+
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">canel</button>
+                <button type="button" class="btn btn-primary"{{action "login"}}>login</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

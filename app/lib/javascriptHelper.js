@@ -13,9 +13,7 @@ function getRestAPIURL(){
       api_url = api_url.replace("www.","");
   }
     
-    
     api_url = "http://api." + api_url;
-    console.log(api_url);
     return api_url;
 }
 
@@ -118,7 +116,7 @@ function requiredBackEnd(controller, method, para, ajaxType, callback) {
             type: ajaxType,
             data: JSON.stringify(para),
             success: function(feedback) {
-                Webstudio.store.save();
+              //  webstudio.store.save();
                 callback(feedback);
             }
         });
@@ -153,7 +151,12 @@ function ReplaceContentInContainer(matchClass, content)
 
 }
 
-
-
+Handlebars.registerHelper('exists', function(variable, options) {
+    if (typeof variable !== 'undefined') {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+});
 
 

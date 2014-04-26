@@ -22,11 +22,11 @@ class BlogsController extends Controller {
 
     public function actionCreate() {
 
-        $request_json = file_get_contents('php://input');
-        $request = CJSON::decode($request_json, true);
+
+        $request = $this->getClientPost();
         $post = $request['blog'];
         $model = new Blog;
-       $model->setAttributes($post);
+        $model->setAttributes($post);
         if ($model->validate()) {
             $model->save();
             $this->sendResponse(204);
@@ -48,15 +48,14 @@ class BlogsController extends Controller {
     }
 
     public function actionUpdate() {
-        $request_json = file_get_contents('php://input');
-        $request = CJSON::decode($request_json, true);
+        $request = $this->getClientPost();
         $blog = $request['blog'];
         $temp = explode("/", $_SERVER['REQUEST_URI']);
         $id = $temp [sizeof($temp) - 1];
         $model = Blog::model()->findByPk($id);
-        
-        
-        
+
+
+
         $model->setAttributes($blog);
 
         if ($model->validate()) {

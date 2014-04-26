@@ -86,9 +86,9 @@ return array(
         'session' => array(
             'sessionName' => 'WebSession',
             'class' => 'CDbHttpSession',
-            'autoCreateSessionTable' => true,
+            'autoCreateSessionTable' => false,
             'connectionID' => 'db',
-            'sessionTableName' => 'MySessionTable',
+            'sessionTableName' => 'studioSession',
           //  'useTransparentSessionID' => ($_POST['PHPSESSID']) ? true : false,
             'autoStart' => 'false',
             'cookieMode' => 'only',

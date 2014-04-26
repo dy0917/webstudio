@@ -35,19 +35,22 @@ class UserIdentity extends CUserIdentity
  
     public function authenticate()
     {
-        $username=strtolower($this->username);
-        $user=User::model()->find('LOWER(username)=?',array($username));
+        $email=strtolower($this->username);
+        $user=User::model()->find('LOWER(email)=?',array($email));
         if($user===null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        else if(!$user->validatePassword($this->password))
+        else if(!$user->validatePassword($this->password)){
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        }
         else
         {
             $this->_id=$user->id;
-            $this->username=$user->username;
+            $this->username=$user->email;
             $this->errorCode=self::ERROR_NONE;
+            //Yii::app()->session->add('projectId',"ttttttt");
+        //error_log("adsfasdfasdf id: ".Yii::app()->session->getSessionID());
         }
-        return $this->errorCode==self::ERROR_NONE;
+        return $this->errorCode;
     }
  
     public function getId()

@@ -6,25 +6,51 @@
 
 
 Webstudio.ApplicationController = Ember.Controller.extend({
-    
-    username:"",
-    password:"",
+    username: "",
+    password: "",
+    loginUser: null,
     actions: {
         init: function()
-        {    
-          
+        {
+
         },
         login: function()
         {
-            requiredBackEnd("site","login","{a:a,b:b}","post",this.printout);
-            
-            console.log(this.get("username")+" "+this.get("password"));
-            this.set("username","");
-            this.set("password","");
+            var that = this;
+            requiredBackEnd("site", "login", '{"email":"' + this.get('username') + '","password":"' + this.get("password") + '"}', "post", function(params) {
+                //  console.log(params);
+
+                that.send("printout", params);
+            });
+
+            this.set("username", "");
+            this.set("password", "");
         },
-        printout:function()
-        {
-            console.log("print out");
+        printout: function(feedback) {
+            var feedback = JSON.stringify(feedback);
+            var t = JSON.parse(feedback);
+            if (t.error === "ERROR_USERNAME_INVALID")
+            {
+                console.log(t.error);
+            }
+            else if (t.error === "ERROR_PASSWORD_INVALID")
+            {
+                console.log(t.error);
+            }
+            else
+            {
+                var that = this;
+                var user = this.store.find('user', t.id);
+                user.then(function() {
+                    that.set("loginUser", user);
+                    console.log(that.get("loginUser").get("displayname"));
+                });
+
+            }
+//            var q = JSON.stringify(feedback);
+//            var t = JSON.parse(q);
+//            console.log(t.displayname);
+
         }
     }
 });
