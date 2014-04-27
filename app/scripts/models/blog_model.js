@@ -11,6 +11,7 @@ Webstudio.Blog = DS.Model.extend({
     type: DS.attr('string'),
     author: DS.attr('string'),
     created: DS.attr('string'),
-    last_update: DS.attr('string')
+    last_update: DS.attr('string'),
+    imageUrl:DS.attr('string')
 
 });

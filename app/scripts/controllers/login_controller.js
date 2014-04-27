@@ -5,20 +5,15 @@
  */
 
 
-Webstudio.ApplicationController = Ember.Controller.extend({
+Webstudio.LoginController = Ember.Controller.extend({
     username: "",
     password: "",
-    loginUser: null,
-    loginSession: null,
-    islogin: false,
-    isloginclick: false,
+    needs: ["application"],
+    isError: false,
     actions: {
-        init: function()
-        {
-
-        },
         login: function()
         {
+            this.set("isError", false);
             var that = this;
             requiredBackEnd("site", "login", '{"email":"' + this.get('username') + '","password":"' + this.get("password") + '"}', "post", function(params) {
 
@@ -28,41 +23,36 @@ Webstudio.ApplicationController = Ember.Controller.extend({
             this.set("username", "");
             this.set("password", "");
         },
-    
         afterlogin: function(feedback) {
             var feedback = JSON.stringify(feedback);
             var objfeeback = JSON.parse(feedback);
             if (objfeeback.error === "ERROR_USERNAME_INVALID")
             {
-                console.log(objfeeback.error);
+                this.set("isError", true);
             }
             else if (objfeeback.error === "ERROR_PASSWORD_INVALID")
             {
-                console.log(objfeeback.error);
+                this.set("isError", true);
             }
             else
             {
-                var that = this;
                 var user = this.store.find('user', objfeeback.id);
-                that.set("loginSession", objfeeback.session_id);
+                var applicationController = this.get('controllers.application');
+                applicationController.set("loginSession", objfeeback.session_id);
                 user.then(function() {
-                    that.set("loginUser", user);
-                    that.set("islogin", true);
-
+                    applicationController.set("loginUser", user);
+                    applicationController.set("islogin", true);
+                    applicationController.send("loginclick");
                 });
-
             }
         },
-            logout: function() {
-            var that = this;
-            requiredBackEnd("site", "logout", '{"logout":"' + that.get("loginSession") + '"}', "post", function(params) {
-                that.set("islogin", false);
-
-            });
+        closewindow: function()
+        {
+            var applicationController = this.get('controllers.application');
+            applicationController.send("loginclick");
         },
-        loginclick: function() {
-      
-            this.set("isloginclick", !this.get("isloginclick"));
-        }
+        
     }
+
+
 });

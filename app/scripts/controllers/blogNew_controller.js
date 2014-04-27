@@ -9,8 +9,8 @@ Webstudio.BlogNewController = Ember.Controller.extend({
     blog: "",
     actions: {
         init: function()
-        {    
-          
+        {
+
         },
         setModel: function(model)
 
@@ -19,13 +19,13 @@ Webstudio.BlogNewController = Ember.Controller.extend({
         },
         submit: function()
         {
+            var that = this;
+            this.blog.save().then(function() {
+                that.set('blog', null);
+                that.transitionToRoute('blogs');
 
-            this.blog.save();
-            
-            
-           this.set('blog',null);
-           this.transitionToRoute('blogs');
-      
+            });
+
         }.observes('isCompleted')
     }
 });

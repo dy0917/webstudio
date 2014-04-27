@@ -92,7 +92,7 @@ return array(
           //  'useTransparentSessionID' => ($_POST['PHPSESSID']) ? true : false,
             'autoStart' => 'false',
             'cookieMode' => 'only',
-            'timeout' => 300
+            'timeout' => 1800
         )
     ),
     // application-level parameters that can be accessed

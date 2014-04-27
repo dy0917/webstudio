@@ -1,0 +1,41 @@
+<div style="background:rgba(0,0,0,0.5);
+     position:absolute;
+     top:0px;
+     left:0px;
+     width:100%;
+     height:100%;
+     overflow:auto;">    
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"{{action "closewindow"}}>&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        {{input type="email" value=username class="form-control" placeholder="Enter email"}}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        {{input type="password" value=password class="form-control" placeholder="Password"}}
+                    </div>
+                    <span>Account registration is not available yet. Please use guess account.</br>
+                        Psername:guess</br>
+                        Password:guess</br>
+                    </span>
+                    {{#if isError}}
+                    <span style="color:red">Email or password invalid.
+                    </span>
+                    {{/if}}
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"{{action "loginclick"}}>canel</button>
+                <button type="button" class="btn btn-primary"{{action "login"}}>login</button>
+            </div>
+        </div>
+    </div>
+</div>

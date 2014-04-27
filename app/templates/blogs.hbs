@@ -1,6 +1,6 @@
 <div class="col-md-3">
-    <div class="well sidebar-nav">
-        <strong>Colors</strong>
+    
+        <strong>Blogs</strong>
         <ul class="list-group">
             {{content.length}}
             {{#each content}}
@@ -10,7 +10,8 @@
             
            <div> {{#link-to 'blogEdit' this}}edit{{/link-to}}</div>
           <div {{action "delete" this}} >delete</div>
+          
             {{/each}}
         </ul>
-    </div>
+    
 </div>

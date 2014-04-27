@@ -70,7 +70,7 @@ class SiteController extends Controller {
      */
     public function actionLogin() {
 
-       $this->clearExpireSession();
+        $this->clearExpireSession();
 //$data = Yii::app()->session->readSession('668no17tdnhd1dedm53l1sdph2');
 //Yii::app()->session->add('projectId',"ttttttt");
         //error_log("adsfasdfasdf id: ".Yii::app()->session->getSessionID());
@@ -87,25 +87,33 @@ class SiteController extends Controller {
         } else if ($error_code == UserIdentity::ERROR_PASSWORD_INVALID) {
             $this->sendResponse(200, '{"error":"ERROR_PASSWORD_INVALID"}');
         } else {//create session, correct data
-               Yii::app()->session->add('projectId', $identity->getId());
+            Yii::app()->session->add('projectId', $identity->getId());
             $model = User::model()->findByPk($identity->getId());
             $arr = $model->attributes;
             unset($arr['password']);
             $arr['session_id'] = Yii::app()->session->getSessionID();
-            $this->sendResponse(200,  json_encode($arr));
+            $this->sendResponse(200, json_encode($arr));
         }
     }
 
     /**
      * Logs out the current user and redirect to homepage.
      */
-    public function actionLogout() {
-        Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
+    public function actionlogout() {
+        $temp_request = $this->getClientPost();
+        $request = CJSON::decode($temp_request, true);
+        $sessionid = $request['logout'];
+        $connection = Yii::app()->db;
+        $sql = 'DELETE FROM studioSession WHERE id = :sessionid';
+        $command = $connection->createCommand($sql);
+        $command->bindParam(":sessionid", $sessionid, PDO::PARAM_STR);
+        $command->execute();
+        $this->sendResponse(204);
     }
 
     public function actionRead() {
-        echo "this is for testing";
+
+        // echo "this is for testing";
     }
 
 }
