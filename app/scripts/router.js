@@ -1,6 +1,7 @@
 Webstudio.Router.map(function() {
     // Add your routes here
     this.resource("index", {path: '/'});
+     this.resource("drop", {path: '/drop'});
     this.resource("blogs", {path: '/blogs'},function() {
    // this.resource("blogNew", {path: '/new'});
   });

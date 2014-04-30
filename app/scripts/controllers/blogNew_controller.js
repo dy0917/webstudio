@@ -19,6 +19,10 @@ Webstudio.BlogNewController = Ember.Controller.extend({
         },
         submit: function()
         {
+          //  var now = new Date();
+          //  this.blog.set('last_update',now);
+
+
             var that = this;
             this.blog.save().then(function() {
                 that.set('blog', null);

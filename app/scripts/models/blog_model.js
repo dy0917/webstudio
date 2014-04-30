@@ -12,6 +12,10 @@ Webstudio.Blog = DS.Model.extend({
     author: DS.attr('string'),
     created: DS.attr('string'),
     last_update: DS.attr('string'),
-    imageUrl:DS.attr('string')
+    imageUrl:DS.attr('string'),
+    gettimeago:function()
+    {
+          return jQuery.timeago(this.get("last_update"));
+    }.property('last_update')
 
 });

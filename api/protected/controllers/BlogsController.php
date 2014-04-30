@@ -26,7 +26,10 @@ class BlogsController extends Controller {
         $request = $this->getClientPost();
         $post = $request['blog'];
         $model = new Blog;
+        $date = new DateTime();
+        //    $date->format('Y-m-d H:i:s');
         $model->setAttributes($post);
+        $model->last_update = $date->format('Y-m-d H:i:s');
         if ($model->validate()) {
             $model->save();
             $this->sendResponse(204);

@@ -2,17 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-function getRestAPIURL(){
+function getRestAPIURL() {
 //    var api_url = document.domain;
 //    api_url = "http://api." + api_url;
 //    console.log(api_url);
 //    return api_url;
     var api_url = document.domain;
-  if(api_url.indexOf("www.") > -1)
-  {
-      api_url = api_url.replace("www.","");
-  }
-    
+    if (api_url.indexOf("www.") > -1)
+    {
+        api_url = api_url.replace("www.", "");
+    }
+
     api_url = "http://api." + api_url;
     return api_url;
 }
@@ -116,8 +116,8 @@ function requiredBackEnd(controller, method, para, ajaxType, callback) {
             type: ajaxType,
             data: JSON.stringify(para),
             success: function(feedback) {
-             
-              //  webstudio.store.save();
+
+                //  webstudio.store.save();
                 callback(feedback);
             }
         });
@@ -158,6 +158,13 @@ Handlebars.registerHelper('exists', function(variable, options) {
     } else {
         return options.inverse(this);
     }
+});
+
+Handlebars.registerHelper('gettimeago', function(variable, options) {
+    
+  // var strvar=  variable.replace(" ", "T");
+
+    return jQuery.timeago(variable);
 });
 
 

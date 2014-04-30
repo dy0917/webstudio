@@ -1,5 +1,5 @@
 //Webstudio.ApplicationAdapter = DS.FixtureAdapter;
- console.log( getRestAPIURL());
+// console.log( getRestAPIURL());
 Webstudio.store = DS.Store.create({
   
     adapter: DS.RESTAdapter.create({
