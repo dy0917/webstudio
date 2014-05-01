@@ -23,12 +23,12 @@ Webstudio.ApplicationController = Ember.Controller.extend({
             requiredBackEnd("site", "login", '{"email":"' + this.get('username') + '","password":"' + this.get("password") + '"}', "post", function(params) {
 
                 that.send("afterlogin", params);
+                that.set("username", "");
+                that.set("password", "");
             });
 
-            this.set("username", "");
-            this.set("password", "");
+
         },
-    
         afterlogin: function(feedback) {
             var feedback = JSON.stringify(feedback);
             var objfeeback = JSON.parse(feedback);
@@ -53,7 +53,7 @@ Webstudio.ApplicationController = Ember.Controller.extend({
 
             }
         },
-            logout: function() {
+        logout: function() {
             var that = this;
             requiredBackEnd("site", "logout", '{"logout":"' + that.get("loginSession") + '"}', "post", function(params) {
                 that.set("islogin", false);
@@ -61,7 +61,7 @@ Webstudio.ApplicationController = Ember.Controller.extend({
             });
         },
         loginclick: function() {
-      
+
             this.set("isloginclick", !this.get("isloginclick"));
         }
     }

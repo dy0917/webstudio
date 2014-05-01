@@ -10,3 +10,73 @@ html, body {
     border: 3px dashed #aaa;
 }
 
+#postmainbox .postuser{
+    float:left;display:inline;position: relative;
+    margin:10px;
+}
+
+#dropboxcontainer { 
+    width:488px;
+    padding:5px 7px 5px 5px; 
+    border:1px solid #808080;
+}
+#txtarea {
+    display:block;
+    width: 480px; 
+    min-width:480px; 
+    max-width:480px; 
+    padding:0.5%;
+    margin:0;
+    border:1px solid #f0f040;
+    background-color:#fffff0;
+    overflow:auto;
+    font-family:comic sans ms;
+}
+
+
+#postmainbox .post{
+    position: relative;
+    display: inline-block;
+    max-width: 276px;
+    padding: 1px;
+    text-align: left;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    white-space: normal;
+}
+
+#postmainbox .arrow{
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid rgba(0,0,0,.25);
+    border-bottom-color: rgba(0,0,0,.25); 
+    left: -9px;
+    top: 10px;
+    position: absolute;
+    border-color: transparent; 
+}
+#postmainbox .arrow-after{
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #555;
+    left: -8px;
+    top: 10px;
+    position: absolute;
+}
+
+#postmainbox .arrow-before{
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 9px solid #f7f7f7;
+    left: -8px;
+    top: 10px;
+    position: absolute;
+    z-index: 10;
+}
