@@ -8,8 +8,6 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane active" id="write">
-
-
         <div id="postmainbox" style="margin-left:10px; "><div class="postuser"><img/></div>
             <div class="post right">
                 <div class="arrow"></div>
@@ -17,23 +15,21 @@
                 <div class="arrow-before"></div>
                 <h3 class="popover-title">Popover right</h3>
                 {{#view Webstudio.PhotoCreateView}}
-
-                <div id="dropbox" style="position: relative; margin: 15px auto;height: 520px; width: 690px; background-color: rgba(242,240,240,0.5);">    
-                    <div class="popover-content">
-                        {{view Webstudio.dropBoxTextArea id="dropboxtextarea" value=inputtext}}
-
+                <div id="dropbox" style="position: relative; margin: 15px auto;height: 520px; width: 510px; background-color: rgba(242,240,240,0.5);">    
+                    <div class="popover-content" style="">
+                        {{view Webstudio.dropBoxTextArea id="txtarea"  value=inputtext}}
                     </div>
                 </div>
+                <div class="new-btn blue-btn" style="margin: auto;  top: 0; position: relative;left: 0;" {{action "printout"}}>
+            Choose 
 
+        </div> 
                 {{/view}}
             </div>
                 
         </div>
 
-        <div class="new-btn blue-btn" style="margin: auto; width: 200px; top: 557px; position: absolute;left: 0;right: 67%;" {{action "printout"}}>
-            Choose 
-
-        </div> 
+        
 
 
 
