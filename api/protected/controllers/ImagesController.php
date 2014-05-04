@@ -1,11 +1,5 @@
 <?php
 
-//header("Access-Control-Allow-Origin: *");
-//header('Content-type: *');
-//header('Access-Control-Request-Method: *');
-//header('Access-Control-Allow-Methods: PUT, POST, OPTIONS, GET');
-//header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
-
 class ImagesController extends Controller {
 
     const JSON_RESPONSE_ROOT_SINGLE = 'image';
@@ -38,7 +32,11 @@ class ImagesController extends Controller {
 
         $imageSrc = $this->getInputData($request['type'], $request['src']);
 
-        file_put_contents('/var/www/images/newImage.jpg', $imageSrc);
+        file_put_contents('/home/adminuser/NetBeansProject/webstudio/api/images/newImage.jpg', $imageSrc);
+        $yourImageUrl = Yii::app()->assetManager->publish(Yii::app()->request->baseUrl . "/images/newImage.jpg");
+        //  $imageurl = Yii::getPathOfAlias('application');
+        //  file_put_contents('/var/www/images/newImage.jpg', $imageSrc);
+        $this->sendResponse(200, $yourImageUrl);
     }
 
     public function getInputData($inputDataType, $inputData) {

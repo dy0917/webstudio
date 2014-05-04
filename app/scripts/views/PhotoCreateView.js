@@ -31,8 +31,8 @@ Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
     drop: function(event) {
         // var controller = this.get("controller");
         //   var value = controller.get("inputtext");
-        var el = document.getElementById("dropboxtextarea");
-        //   this.insertAtCaret("this is test");
+        var el = document.getElementById("txtarea");
+        var that = this;
 
         var dataTransfer = event.originalEvent.dataTransfer;
         var files = dataTransfer.files;
@@ -57,10 +57,12 @@ Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
                         photoName = photoName.replace(/\s/g, '_');
                         var target = getTarget(e, "pural");
                         var src = target.result;
-
+                        var currentdate = new Date();
+                        var photoid = "![" + createGuid() + "]()";
+                        that.insertTextAtCursor(el, photoid);
                         //  console.log(src);
-                        requiredBackEnd("images", "writeimage", '{"src":"' + src + '","type":"' + type + '"}', "post", function(params) {
-
+                        requiredBackEnd("images", "writeimage", '{"src":"' + src + '","type":"' + type + '","userid":"' + "3" + '"}', "post", function(params) {
+                            el.value = el.value.replace(photoid, "sucess");
                             //     that.send("afterlogin", params);
 
                         });
@@ -70,7 +72,7 @@ Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
 
             })(files[i]);
         }
-        $('#dragAndDroppArea').attr('style', "display:block");
+        $("#dropbox").removeClass("active");
         return false;
     },
     insertTextAtCursor: function(el, text) {

@@ -25,7 +25,7 @@ function createGuid() {
     randomnumber = removeZero(randomnumber);
     var result = randomnumber +
             dateObject.getTime().toString();
-    return "test" + result.toString();
+    return "image_" + result.toString();
 }
 
 function createReviewid() {
