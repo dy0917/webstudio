@@ -58,14 +58,17 @@ Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
                         var target = getTarget(e, "pural");
                         var src = target.result;
                         var currentdate = new Date();
-                        var photoid = "![" + createGuid() + "]()";
-                        that.insertTextAtCursor(el, photoid);
-                        //  console.log(src);
-                        requiredBackEnd("images", "writeimage", '{"src":"' + src + '","type":"' + type + '","userid":"' + "3" + '"}', "post", function(params) {
-                            el.value = el.value.replace(photoid, "sucess");
-                            //     that.send("afterlogin", params);
+                        var guid = createGuid();
+                        var uploadingdisplaystring = "![" + guid + "]()";
+                        that.insertTextAtCursor(el, uploadingdisplaystring);
+     
+                        requiredBackEnd("imageCreate", "writeimage", '{"src":"' + src + '","type":"' + type + '","userid":"' + "3"
+                                + '","imagename":"' + photoName + '"}', "post", function(params) {
+                    
+                                    el.value = el.value.replace(uploadingdisplaystring, "![" + guid + "](" + params + ")");
+                                
 
-                        });
+                                });
 
                     }, reader.readAsDataURL(files[i]);
                 }

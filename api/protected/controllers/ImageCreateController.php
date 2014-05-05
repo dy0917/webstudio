@@ -1,9 +1,9 @@
 <?php
 
-class ImagesController extends Controller {
+class ImageCreateController extends Controller {
 
-    const JSON_RESPONSE_ROOT_SINGLE = 'image';
-    const JSON_RESPONSE_ROOT_PLURAL = 'images';
+    // const JSON_RESPONSE_ROOT_SINGLE = 'image';
+    // const JSON_RESPONSE_ROOT_PLURAL = 'images';
 
     public function actionIndex() {
         
@@ -32,11 +32,11 @@ class ImagesController extends Controller {
 
         $imageSrc = $this->getInputData($request['type'], $request['src']);
 
-        file_put_contents('/home/adminuser/NetBeansProject/webstudio/api/images/newImage.jpg', $imageSrc);
-        $yourImageUrl = Yii::app()->assetManager->publish(Yii::app()->request->baseUrl . "/images/newImage.jpg");
-        //  $imageurl = Yii::getPathOfAlias('application');
-        //  file_put_contents('/var/www/images/newImage.jpg', $imageSrc);
-        $this->sendResponse(200, $yourImageUrl);
+        file_put_contents(Yii::app()->params['diskpath'] . '/images/' . $request['imagename'], $imageSrc);
+        $ImageUrl = $_SERVER['SERVER_NAME'] . "/images/" . $request['imagename'];
+     
+        echo $ImageUrl;
+
     }
 
     public function getInputData($inputDataType, $inputData) {

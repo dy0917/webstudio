@@ -89,7 +89,7 @@ return array(
             'autoCreateSessionTable' => false,
             'connectionID' => 'db',
             'sessionTableName' => 'studioSession',
-          //  'useTransparentSessionID' => ($_POST['PHPSESSID']) ? true : false,
+            //  'useTransparentSessionID' => ($_POST['PHPSESSID']) ? true : false,
             'autoStart' => 'false',
             'cookieMode' => 'only',
             'timeout' => 1800
@@ -100,5 +100,6 @@ return array(
     'params' => array(
         // this is used in contact page
         'adminEmail' => 'webmaster@example.com',
+        'diskpath' => '/home/adminuser/NetBeansProject/webstudio/api'
     ),
 );
