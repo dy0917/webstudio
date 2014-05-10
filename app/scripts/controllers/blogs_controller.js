@@ -8,10 +8,7 @@
 Webstudio.BlogsController = Ember.ArrayController.extend({
     actions: {
         init: function() {
-            for (var i = 0; i < this.get('content').get('length'); i++)
-            {
-                console.log(this.get('content')[i]);
-            }
+
         },
         initial: function()
         {

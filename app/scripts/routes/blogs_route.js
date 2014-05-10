@@ -10,12 +10,15 @@ Webstudio.BlogsRoute = Ember.Route.extend({
         });
 
         controller.set('content', blogs);
-        //    }
+
     },
     model: function() {
 
         var blogs = this.store.find('blog');
 
         return blogs;
+    },
+    renderTemplate: function() {
+        this.render('blogs');
     }
 });

@@ -22,5 +22,9 @@ Webstudio.Blog = DS.Model.extend({
         str = str.replace(/\!\[\w+\]\(/g, '<img src="http://');
         str = str.replace(/\.jpg\)/g, '.jpg">');
         return str;
-    }.property('body')
+    }.property('body'),
+    getCurrentUrl: function()
+    {
+        return document.URL;
+    }.property('id')
 });

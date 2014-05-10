@@ -3,25 +3,6 @@
  * and open the template in the editor.
  */
 
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '{525231417586664}',
-          xfbml      : true,
-          version    : 'v2.0'
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-
-
-
-
 function getRestAPIURL() {
 //    var api_url = document.domain;
 //    api_url = "http://api." + api_url;
@@ -99,8 +80,6 @@ function getDomain()
 }
 function getImageWidth(imgSrc)
 {
-
-
     var deferred = $.Deferred();
     deferred.done(function(imgSrc) {
         var img = new Image();
@@ -169,27 +148,20 @@ function ReplaceContentInContainer(matchClass, content)
             elems[i].style.display = 'none';
         }
     }
-
 }
 
-Handlebars.registerHelper('exists', function(variable, options) {
-    if (typeof variable !== null) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
-});
+function getCookiebyName(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2)
+        return parts.pop().split(";").shift();
+}
 
-Handlebars.registerHelper('gettimeago', function(variable, options) {
-    
-  // var strvar=  variable.replace(" ", "T");
-
-    return jQuery.timeago(variable);
-});
-
-Ember.Handlebars.helper('somehelper', function(value) {
-  // Change "value" if necessary
-  // ...
-  return new Handlebars.SafeString(value);
-});
+function setCookie(cname, cvalue)
+{
+    var d = new Date();
+    d.setTime(d.getTime() + (30 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
 

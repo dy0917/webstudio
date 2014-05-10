@@ -5,8 +5,11 @@
  */
 
 
-Webstudio.BlogsController = Ember.Controller.extend({
-     
+Webstudio.BlogController = Ember.Controller.extend({
+    actions: {
+    
+    }
 
- 
+
+
 });

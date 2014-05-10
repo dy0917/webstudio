@@ -42,27 +42,27 @@ class SiteController extends Controller {
         }
     }
 
-    /**
-     * Displays the contact page
-     */
-    public function actionContact() {
-        $model = new ContactForm;
-        if (isset($_POST['ContactForm'])) {
-            $model->attributes = $_POST['ContactForm'];
-            if ($model->validate()) {
-                $name = '=?UTF-8?B?' . base64_encode($model->name) . '?=';
-                $subject = '=?UTF-8?B?' . base64_encode($model->subject) . '?=';
-                $headers = "From: $name <{$model->email}>\r\n" .
-                        "Reply-To: {$model->email}\r\n" .
-                        "MIME-Version: 1.0\r\n" .
-                        "Content-type: text/plain; charset=UTF-8";
 
-                mail(Yii::app()->params['adminEmail'], $subject, $model->body, $headers);
-                Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
-                $this->refresh();
-            }
+
+    public function actionAutoLogin() {
+        //get user input
+        $temp_request = $this->getClientPost();
+        $request = CJSON::decode($temp_request, true);
+        $sessionid = $request['session_id'];
+        // get session
+        $connection = Yii::app()->db;
+        $sql = 'SELECT * FROM studioSession WHERE id = :sessionid';
+        $command = $connection->createCommand($sql);
+        $command->bindParam(':sessionid', $sessionid, PDO::PARAM_STR);
+        $rowCount = $command->execute();
+        $dataReader = $command->queryAll();
+        if ($rowCount == 1) {
+            $session_record = $dataReader[0]["data"];
+            error_log($session_record);
+        } else {
+            echo "SESSION_MISSING";
         }
-        $this->render('contact', array('model' => $model));
+        //   echo "ok";
     }
 
     /**
@@ -71,9 +71,7 @@ class SiteController extends Controller {
     public function actionLogin() {
 
         $this->clearExpireSession();
-//$data = Yii::app()->session->readSession('668no17tdnhd1dedm53l1sdph2');
-//Yii::app()->session->add('projectId',"ttttttt");
-        //error_log("adsfasdfasdf id: ".Yii::app()->session->getSessionID());
+
         $temp_request = $this->getClientPost();
 
         $request = CJSON::decode($temp_request, true);
@@ -87,7 +85,8 @@ class SiteController extends Controller {
         } else if ($error_code == UserIdentity::ERROR_PASSWORD_INVALID) {
             $this->sendResponse(200, '{"error":"ERROR_PASSWORD_INVALID"}');
         } else {//create session, correct data
-            Yii::app()->session->add('projectId', $identity->getId());
+            Yii::app()->session->add('UserId', $identity->getId());
+            //     Yii::app()->session->add('aaaaaaaaaaaaaId', "ffffffffffff");
             $model = User::model()->findByPk($identity->getId());
             $arr = $model->attributes;
             unset($arr['password']);
@@ -116,4 +115,8 @@ class SiteController extends Controller {
         // echo "this is for testing";
     }
 
+//
+//    public function actionTest() {
+//        echo "ok";
+//    }
 }

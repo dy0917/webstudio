@@ -12,26 +12,32 @@ Webstudio.ApplicationController = Ember.Controller.extend({
     loginSession: null,
     islogin: false,
     isloginclick: false,
-    test: "this is test attribute",
     actions: {
         init: function()
         {
-
+            this.send("autoLogin");
         },
         logout: function() {
             var that = this;
             requiredBackEnd("site", "logout", '{"logout":"' + that.get("loginSession") + '"}', "post", function(params) {
                 that.set("islogin", false);
-
             });
         },
         loginclick: function() {
 
             this.set("isloginclick", !this.get("isloginclick"));
         },
-        liToggle: function()
+        autoLogin: function()
         {
-            $('li').toggleclass("active");
+            var session_id = getCookiebyName("session_id");
+            if (session_id != null || session_id != undefined) {
+ 
+                requiredBackEnd("site", "autoLogin", '{"session_id":"' + session_id + '"}', "post", function(params) {
+
+                });
+            } else {
+                console.log("dont have session_id");
+            }
         }
 
     }

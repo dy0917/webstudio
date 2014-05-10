@@ -94,7 +94,6 @@ class BlogsController extends Controller {
             $arrtemp = $model->attributes;
             $arrtemp["displayname"] = $model->author->attributes["displayname"];
             $arrtemp["imageurl"] = $model->author->attributes["imageurl"];
-            error_log(var_export($arrtemp, true));
             array_push($arr, $arrtemp);
         }
 

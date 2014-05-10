@@ -13,7 +13,8 @@
             </div>
             <div class="modal-body">
 
-                <form role="form">
+                <form id="fromLogin" role="form">
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         {{input type="email" value=username class="form-control" placeholder="Enter email"}}
@@ -30,11 +31,13 @@
                     <span style="color:red">Email or password invalid.
                     </span>
                     {{/if}}
+
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"{{action "loginclick"}}>canel</button>
-                <button type="button" class="btn btn-primary"{{action "login"}}>login</button>
+                <button id="btnlogin" class="btn btn-primary ladda-button" data-style="expand-right" {{action "login"}}><span class="ladda-label">login</span><span class="ladda-spinner"></span><span class="ladda-spinner"></span></button>
+
             </div>
         </div>
     </div>
