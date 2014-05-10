@@ -7,15 +7,17 @@
         </div>
         <div class="form-group">
             <label for="blog">blog</label>
-            {{model.body }}
+            {{{model.formattedHtml }}}
         </div>
         <div class="form-group">
             <label for="Author">Author</label>
-            {{model.author }}
+            {{model.displayname }}
         </div>
-      <div class="form-group">
+        <div class="form-group">
             <label for="Author">Last update</label>
             {{model.gettimeago }}
         </div>
     </form>
+    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
+
 </div>

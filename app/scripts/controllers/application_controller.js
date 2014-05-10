@@ -8,50 +8,15 @@
 Webstudio.ApplicationController = Ember.Controller.extend({
     username: "",
     password: "",
-    loginUser: null,
+    loginedUser: null,
     loginSession: null,
     islogin: false,
     isloginclick: false,
+    test: "this is test attribute",
     actions: {
         init: function()
         {
 
-        },
-        login: function()
-        {
-            var that = this;
-            requiredBackEnd("site", "login", '{"email":"' + this.get('username') + '","password":"' + this.get("password") + '"}', "post", function(params) {
-
-                that.send("afterlogin", params);
-                that.set("username", "");
-                that.set("password", "");
-            });
-
-
-        },
-        afterlogin: function(feedback) {
-            var feedback = JSON.stringify(feedback);
-            var objfeeback = JSON.parse(feedback);
-            if (objfeeback.error === "ERROR_USERNAME_INVALID")
-            {
-                console.log(objfeeback.error);
-            }
-            else if (objfeeback.error === "ERROR_PASSWORD_INVALID")
-            {
-                console.log(objfeeback.error);
-            }
-            else
-            {
-                var that = this;
-                var user = this.store.find('user', objfeeback.id);
-                that.set("loginSession", objfeeback.session_id);
-                user.then(function() {
-                    that.set("loginUser", user);
-                    that.set("islogin", true);
-
-                });
-
-            }
         },
         logout: function() {
             var that = this;
@@ -63,6 +28,11 @@ Webstudio.ApplicationController = Ember.Controller.extend({
         loginclick: function() {
 
             this.set("isloginclick", !this.get("isloginclick"));
+        },
+        liToggle: function()
+        {
+            $('li').toggleclass("active");
         }
+
     }
 });

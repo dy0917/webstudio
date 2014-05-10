@@ -29,14 +29,18 @@ Webstudio.Droppable = Ember.Mixin.create({
 Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
     contentBinding: "photoCreate",
     drop: function(event) {
-        // var controller = this.get("controller");
-        //   var value = controller.get("inputtext");
+        //     document.getElementById("txtarea").value = " afadfasdfasdfasdf";
+
         var el = document.getElementById("txtarea");
         var that = this;
-
+        var userid = 3;
+        if (that.getLoginedUser() !== null)
+        {
+            userid = that.getLoginedUser().get("id");
+        }
         var dataTransfer = event.originalEvent.dataTransfer;
         var files = dataTransfer.files;
-        var controller = this.get("controller");
+
         var filesize = 0;
 
         for (var i = 0; i < files.length; i++) {
@@ -57,30 +61,26 @@ Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
                         photoName = photoName.replace(/\s/g, '_');
                         var target = getTarget(e, "pural");
                         var src = target.result;
-                        var currentdate = new Date();
+                        //   var currentdate = new Date();
                         var guid = createGuid();
                         var uploadingdisplaystring = "![" + guid + "]()";
-                        that.insertTextAtCursor(el, uploadingdisplaystring);
-     
-                        requiredBackEnd("imageCreate", "writeimage", '{"src":"' + src + '","type":"' + type + '","userid":"' + "3"
+                        that.insertTextAtCursor(el, uploadingdisplaystring + "\n\r");
+                        requiredBackEnd("imageCreate", "writeimage", '{"src":"' + src + '","type":"' + type + '","userid":"' + userid
                                 + '","imagename":"' + photoName + '"}', "post", function(params) {
-                    
                                     el.value = el.value.replace(uploadingdisplaystring, "![" + guid + "](" + params + ")");
-                                
-
+                                    var blog = that.get("controller").get('blog');
+                                    blog.set("body", el.value);
                                 });
-
                     }, reader.readAsDataURL(files[i]);
                 }
-
             })(files[i]);
         }
         $("#dropbox").removeClass("active");
         return false;
     },
     insertTextAtCursor: function(el, text) {
-        console.log(text);
         var val = el.value, endIndex, range;
+        var blog = this.get("controller").get('blog');
         if (typeof el.selectionStart != "undefined" && typeof el.selectionEnd != "undefined") {
             endIndex = el.selectionEnd;
             el.value = val.slice(0, el.selectionStart) + text + val.slice(endIndex);
@@ -92,7 +92,14 @@ Webstudio.PhotoCreateView = Ember.View.extend(Webstudio.Droppable, {
             range.text = text;
             range.select();
         }
-    }
+        //   blog.set("body", blog.get("body") + "a");
 
+    },
+    getLoginedUser: function()
+    {
+        var applicationController = this.get("controller").get('controllers.application');
+        var loginedUser = applicationController.get("loginedUser");
+        return loginedUser;
+    }
 
 });

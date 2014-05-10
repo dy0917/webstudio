@@ -1,5 +1,5 @@
 Webstudio.dropBoxTextArea = Ember.TextArea.extend({
-    //Now if isInvalid is true CSS class "highlight" is applied to text field
+//Now if isInvalid is true CSS class "highlight" is applied to text field
     /* other ways include 
      isValid::error-class error-class will be applied when isValid is false
      isValid:normal-class:error-class, normal-class is applied when isValid is true else error-class is applied
@@ -12,5 +12,16 @@ Webstudio.dropBoxTextArea = Ember.TextArea.extend({
         } else {
             return false;
         }
-    }.property('value')
+    }.property('value'),
+    didInsertElement: function() {
+
+    },
+    keyDown: function(event) {
+
+        if (event.keyCode === 13) {          
+           
+     //       document.getElementById("txtArea").value = document.getElementById("txtArea").value + "\n";
+        }
+    }
+
 });

@@ -2,6 +2,26 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{525231417586664}',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+
+
 function getRestAPIURL() {
 //    var api_url = document.domain;
 //    api_url = "http://api." + api_url;
@@ -167,4 +187,9 @@ Handlebars.registerHelper('gettimeago', function(variable, options) {
     return jQuery.timeago(variable);
 });
 
+Ember.Handlebars.helper('somehelper', function(value) {
+  // Change "value" if necessary
+  // ...
+  return new Handlebars.SafeString(value);
+});
 

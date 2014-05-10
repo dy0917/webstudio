@@ -13,10 +13,16 @@ class BlogsController extends Controller {
 
     public function actionIndex() {
 
-        $models = Blog::model()->findAll();
+
+//        $criteria = new CDbCriteria;
+//        $criteria->select = 'author.diplayname, author.imageurl'; // select fields which you want in output
+//        $criteria->condition = 't.author_id = author.id';
+//        $criteria->join = 'INNER JOIN user ON (t.author_id=author.id)';
+        // $criteria = new CDbCriteria;
+        //  $criteria->join = 'INNER JOIN user ON (t.author_id=user.id)';
+        $models = Blog::model()->with('author')->together()->findAll();
 
         $json = $this->arrtoJson(self::JSON_RESPONSE_ROOT_PLURAL, $models);
-
         $this->sendResponse(200, $json);
     }
 
@@ -79,6 +85,22 @@ class BlogsController extends Controller {
 
     public function actionTest() {
         echo "asdfasdfasdf";
+    }
+
+    public function arrtoJson($modelType, $modelList) {
+        $arr = array();
+        foreach ($modelList as $model) {
+
+            $arrtemp = $model->attributes;
+            $arrtemp["displayname"] = $model->author->attributes["displayname"];
+            $arrtemp["imageurl"] = $model->author->attributes["imageurl"];
+            error_log(var_export($arrtemp, true));
+            array_push($arr, $arrtemp);
+        }
+
+        $json = '{"' . $modelType . '":' . json_encode($arr) . '}';
+
+        return $json;
     }
 
 }

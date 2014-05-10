@@ -7,6 +7,8 @@
 
 Webstudio.BlogNewController = Ember.Controller.extend({
     blog: "",
+    isWriteSwitch: true,
+    needs: ["application"],
     actions: {
         init: function()
         {
@@ -16,13 +18,17 @@ Webstudio.BlogNewController = Ember.Controller.extend({
 
         {
             this.blog = model;
+
+        },
+        printout: function() {
+            console.log(this.get("inputtext"));
+        },
+        setWriteSwitch: function()
+        {
+            this.set("isWriteSwitch", !this.get("isWriteSwitch"));
         },
         submit: function()
         {
-          //  var now = new Date();
-          //  this.blog.set('last_update',now);
-
-
             var that = this;
             this.blog.save().then(function() {
                 that.set('blog', null);
@@ -30,6 +36,6 @@ Webstudio.BlogNewController = Ember.Controller.extend({
 
             });
 
-        }.observes('isCompleted')
+        }
     }
 });

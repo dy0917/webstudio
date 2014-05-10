@@ -29,14 +29,15 @@ class ImageCreateController extends Controller {
         $temp_request = $this->getClientPost();
 
         $request = CJSON::decode($temp_request, true);
-
+        $userid = $request['userid'];
         $imageSrc = $this->getInputData($request['type'], $request['src']);
-
-        file_put_contents(Yii::app()->params['diskpath'] . '/images/' . $request['imagename'], $imageSrc);
-        $ImageUrl = $_SERVER['SERVER_NAME'] . "/images/" . $request['imagename'];
-     
+        $foldername = Yii::app()->params['diskpath'] . '/images/' . $userid . '/';
+        if (!file_exists($foldername)) {
+            mkdir($foldername, 0777);
+        }
+        file_put_contents($foldername . $request['imagename'], $imageSrc);
+        $ImageUrl = $_SERVER['SERVER_NAME'] . "/images/" . $userid . "/" . $request['imagename'];
         echo $ImageUrl;
-
     }
 
     public function getInputData($inputDataType, $inputData) {

@@ -1,12 +1,13 @@
 
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#write" data-toggle="tab">Write</a></li>
-    <li><a href="#Preview" data-toggle="tab">Preview</a></li>
+    <li class="active"><a data-toggle="tab"{{action "setWriteSwitch"}}>Write</a></li>
+    <li><a data-toggle="tab" {{action "setWriteSwitch"}}>Preview</a></li>
 
 </ul>
 
 <!-- Tab panes -->
-<div class="tab-content">
+<div >
+    {{#if isWriteSwitch}}
     <div class="tab-pane active" id="write">
         <div id="postmainbox" style="margin-left:10px; "><div class="postuser"><img/></div>
             <div class="post right" style="margin:15px">
@@ -31,10 +32,13 @@
 
 
     </div>
+    {{else}}
+
     <div class="tab-pane" id="Preview">
-        {{{inputtext}}}
+        {{{htmlformat}}}
 
     </div>
+    {{/if}}
 </div>
 
 

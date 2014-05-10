@@ -110,13 +110,12 @@ class Controller extends CController {
         // this->sendResponse();
     }
 
-    public function arrtoJson($modelType, $modelList) {
+    protected function arrtoJson($modelType, $modelList) {
         $arr = array();
         foreach ($modelList as $model) {
-            //  $arr[$t->id] = $t->attributes;
+            error_log(var_export($model->author->attributes, true));
             array_push($arr, $model->attributes);
         }
-
 
         $json = '{"' . $modelType . '":' . json_encode($arr) . '}';
 
@@ -139,10 +138,10 @@ class Controller extends CController {
     }
 
     public function clearExpireSession
-            ()
-    {
-         Yii::app()->db->createCommand("DELETE FROM studioSession WHERE expire < UNIX_TIMESTAMP()")->execute();
+    () {
+        Yii::app()->db->createCommand("DELETE FROM studioSession WHERE expire < UNIX_TIMESTAMP()")->execute();
     }
+
     public function getTest() {
         return 'test';
     }

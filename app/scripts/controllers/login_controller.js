@@ -40,7 +40,7 @@ Webstudio.LoginController = Ember.Controller.extend({
                 var applicationController = this.get('controllers.application');
                 applicationController.set("loginSession", objfeeback.session_id);
                 user.then(function() {
-                    applicationController.set("loginUser", user);
+                    applicationController.set("loginedUser", user);
                     applicationController.set("islogin", true);
                     applicationController.send("loginclick");
                 });
@@ -50,7 +50,7 @@ Webstudio.LoginController = Ember.Controller.extend({
         {
             var applicationController = this.get('controllers.application');
             applicationController.send("loginclick");
-        },
+        }
         
     }
 
