@@ -1,10 +1,13 @@
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=570524553" type="text/javascript" charset="utf-8"></script>
 <div style="background:rgba(0,0,0,0.5);
      position:absolute;
      top:0px;
      left:0px;
      width:100%;
      height:100%;
-     overflow:auto;">    
+     overflow:auto;">   
+
+
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -23,19 +26,19 @@
                         <label for="exampleInputPassword1">Password</label>
                         {{input type="password" value=password class="form-control" placeholder="Password"}}
                     </div>
-                    <span>Account registration is not available yet. Please use guess account.</br>
+                    <button type="button" data-scope="email" class="btn btn-default" {{action "fb_login"}}">Facebook login</button>
+                    <p>Account registration is not available yet. Please use guess account.</br>
                         Psername:guess</br>
                         Password:guess</br>
-                    </span>
+                    </p>
                     {{#if isError}}
                     <span style="color:red">Email or password invalid.
                     </span>
                     {{/if}}
-
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"{{action "loginclick"}}>canel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"{{action "closewindow"}}>canel</button>
                 <button id="btnlogin" class="btn btn-primary ladda-button" data-style="expand-right" {{action "login"}}><span class="ladda-label">login</span><span class="ladda-spinner"></span><span class="ladda-spinner"></span></button>
 
             </div>

@@ -6,7 +6,6 @@ Webstudio.BlogRoute = Ember.Route.extend({
         controller.set('model', model);
     },
     model: function(param) {
-
         var blog = this.store.find('blog', param.id);
         return blog;
     }

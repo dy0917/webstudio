@@ -42,8 +42,6 @@ class SiteController extends Controller {
         }
     }
 
-
-
     public function actionAutoLogin() {
         //get user input
         $temp_request = $this->getClientPost();
@@ -58,7 +56,9 @@ class SiteController extends Controller {
         $dataReader = $command->queryAll();
         if ($rowCount == 1) {
             $session_record = $dataReader[0]["data"];
-            error_log($session_record);
+            $id = $this->getSessionVarByName('UserId', $session_record);
+
+            $this->sendResponse(200, $id);
         } else {
             echo "SESSION_MISSING";
         }
@@ -86,7 +86,9 @@ class SiteController extends Controller {
             $this->sendResponse(200, '{"error":"ERROR_PASSWORD_INVALID"}');
         } else {//create session, correct data
             Yii::app()->session->add('UserId', $identity->getId());
-            //     Yii::app()->session->add('aaaaaaaaaaaaaId', "ffffffffffff");
+            $date = new DateTime();
+            Yii::app()->session->add('date', $date->format('Y-m-d H:i:s'));
+
             $model = User::model()->findByPk($identity->getId());
             $arr = $model->attributes;
             unset($arr['password']);
@@ -115,8 +117,17 @@ class SiteController extends Controller {
         // echo "this is for testing";
     }
 
-//
-//    public function actionTest() {
-//        echo "ok";
-//    }
+    private function getSessionVarByName($name, $strSession) {
+
+        $arr = explode(";", $strSession);
+        while (list(, $tempval) = each($arr)) {
+            if (strpos($tempval, $name) !== false) {
+                break;    /* You could also write 'break 1;' here. */
+            }
+        }
+        $strtemp = explode(':', $tempval)[2];
+        $strtemp = str_replace('"', "", $strtemp);
+        return $strtemp;
+    }
+
 }

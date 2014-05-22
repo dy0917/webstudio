@@ -23,22 +23,25 @@ Webstudio.ApplicationController = Ember.Controller.extend({
                 that.set("islogin", false);
             });
         },
-        loginclick: function() {
+        switchLogin: function() {
 
             this.set("isloginclick", !this.get("isloginclick"));
         },
         autoLogin: function()
         {
+            var that = this;
             var session_id = getCookiebyName("session_id");
             if (session_id != null || session_id != undefined) {
- 
                 requiredBackEnd("site", "autoLogin", '{"session_id":"' + session_id + '"}', "post", function(params) {
-
+                    if (params !== "SESSION_MISSING") {
+                        var user = that.store.find('user', params);
+                        that.set("loginedUser", user);
+                        that.set("islogin", true);
+                    }
                 });
             } else {
                 console.log("dont have session_id");
             }
         }
-
     }
 });

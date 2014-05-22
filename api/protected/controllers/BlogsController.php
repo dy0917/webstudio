@@ -30,10 +30,9 @@ class BlogsController extends Controller {
 
 
         $request = $this->getClientPost();
-        $post = $request['blog'];
+        $post = $request[self::JSON_RESPONSE_ROOT_SINGLE];
         $model = new Blog;
         $date = new DateTime();
-        //    $date->format('Y-m-d H:i:s');
         $model->setAttributes($post);
         $model->last_update = $date->format('Y-m-d H:i:s');
         if ($model->validate()) {
@@ -49,9 +48,14 @@ class BlogsController extends Controller {
 // $request_json = file_get_contents('php://input');
         $temp = explode("/", $_SERVER['REQUEST_URI']);
         $id = $temp [sizeof($temp) - 1];
-
-        $model = Blog::model()->findByPk($id);
-        $json = $this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE, $model);
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('t.id=' . $id);
+        $model = Blog::model()->with('author')->together()->findAll($criteria);
+        $arrtemp = $model[0]->attributes;
+        $arrtemp["displayname"] = $model[0]->author->attributes["displayname"];
+        $arrtemp["imageurl"] = $model[0]->author->attributes["imageurl"];
+        $json = '{"' . self::JSON_RESPONSE_ROOT_SINGLE . '":' . json_encode($arrtemp) . '}';
+        //   $json = $this->objtoJson(self::JSON_RESPONSE_ROOT_SINGLE, $arrtemp);
 
         $this->sendResponse(200, $json);
     }
@@ -84,7 +88,7 @@ class BlogsController extends Controller {
     }
 
     public function actionTest() {
-        echo "asdfasdfasdf";
+        
     }
 
     public function arrtoJson($modelType, $modelList) {

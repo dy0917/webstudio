@@ -115,10 +115,12 @@ function requiredBackEnd(controller, method, para, ajaxType, callback) {
             type: ajaxType,
             data: JSON.stringify(para),
             success: function(feedback) {
-
-                //  webstudio.store.save();
                 callback(feedback);
+            }, error: function()
+            {
+                console.log("post back error");
             }
+
         });
     }
 }
@@ -164,4 +166,6 @@ function setCookie(cname, cvalue)
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
+
+
 

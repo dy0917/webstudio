@@ -37,5 +37,6 @@ Webstudio.BlogNewController = Ember.Controller.extend({
             });
 
         }
+       
     }
 });

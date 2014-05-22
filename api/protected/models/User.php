@@ -10,7 +10,6 @@
  * @property string $password
  */
 class User extends CActiveRecord {
-    
 
     /**
      * @return string the associated database table name
@@ -26,7 +25,7 @@ class User extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('displayname, email, password', 'required'),
+            array('displayname', 'required'),
             array('displayname, email, password', 'length', 'max' => 45),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
@@ -41,6 +40,7 @@ class User extends CActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
+            'socialMidias' => array(self::HAS_MANY, 'User', 'user_id'),
         );
     }
 
@@ -97,5 +97,5 @@ class User extends CActiveRecord {
         error_log($this->password);
         return $this->password == $password;
     }
-    
+
 }

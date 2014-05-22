@@ -6,7 +6,6 @@
 
 
 Webstudio.User = DS.Model.extend({
-    displayname: DS.attr('string')
-
-
+    displayname: DS.attr('string'),
+    social_media_id: DS.attr('string'),
 });

@@ -1,38 +1,21 @@
 <!doctype html>
-<html>
+<html xmlns:wb="http://open.weibo.com/wb">
     <head>
         <meta charset="utf-8">
         <title>Web Focus Studio</title>
 
         <!-- build:css styles/main.css -->
         <link rel="stylesheet" href="styles/style.css">
-        <link rel="stylesheet" href="lib/ladda/ladda-themeless.min.css">
+        <link rel="stylesheet" href="styles/ladda-themeless.min.css">
+        <link rel="stylesheet" href="styles/customSpinner.css">
         <!-- endbuild -->
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=570524553" type="text/javascript" charset="utf-8"></script>
     </head>
     <body>
-
+        <div></div>
 
         <!-- build:js(app) scripts/components.js -->
-        <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId: '525231417586664',
-                    xfbml: true,
-                    version: 'v2.0'
-                });
-            };
-
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
+        <script src="lib/facebookComponents.js"></script>
         <script src="bower_components/jquery/jquery-1.11.0.min.js"></script>
         <script src="bower_components/handlebars/handlebars.runtime.js"></script>
         <script src="@@ember"></script>
