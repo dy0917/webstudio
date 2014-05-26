@@ -18,7 +18,6 @@ class UsersController extends Controller {
     public function actionCreate() {
         $request = $this->getClientPost();
         $user = $request[self::JSON_RESPONSE_ROOT_SINGLE];
-        error_log(var_export($user, true));
         $user_model = new User;
         //  $user_model->setAttributes($user);
         $user_model->displayname = $user["displayname"];

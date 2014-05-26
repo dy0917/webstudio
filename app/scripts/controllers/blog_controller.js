@@ -30,6 +30,10 @@ Webstudio.BlogController = Ember.Controller.extend({
             );
 
         }
+    },
+    getblogid: function()
+    {
+        return this.get("model").get("id");
     }
 
 

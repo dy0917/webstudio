@@ -8,7 +8,6 @@
 Webstudio.BlogNewController = Ember.Controller.extend({
     blog: "",
     isWriteSwitch: true,
-    needs: ["application"],
     actions: {
         init: function()
         {

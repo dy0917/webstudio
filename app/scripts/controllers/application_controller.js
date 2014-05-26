@@ -44,4 +44,14 @@ Webstudio.ApplicationController = Ember.Controller.extend({
             }
         }
     }
+    ,
+    getuserid: function()
+    {
+        var user_id = 3;
+        if (this.get("loginedUser") != null || this.get("loginedUser") != undefined)
+        {
+            user_id = this.get("loginedUser").get("id");
+        }
+        return user_id;
+    }
 });

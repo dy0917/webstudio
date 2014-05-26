@@ -9,15 +9,39 @@ Webstudio.MessageBoardController = Ember.ArrayController.extend({
     message: "",
     sortProperties: ['id'],
     sortAscending: false,
+    needs: ["application", "blog"],
     //  content: [{id: 1, message: "aaaaa"}, {id: 2, message: "svvvv"}, {id: 3, message: "ddddd"}],
+    init: function()
+    {
+        var blogController = this.get('controllers.blog');
+        var blog_id = blogController.getblogid();
+
+        var messages = this.store.find('message', {blog_id: blog_id});
+        var that = this;
+        messages.then(function()
+        {
+            //   console.log(messages.get("length"));
+            for (var i = 0; i < messages.get("length"); i++)
+            {
+                that.get("content").pushObject(messages.objectAt(i));
+            }
+        });
+
+
+    },
     actions: {
         reverse: function() {
             return this.get('content').toArray().reverse();
         }.property('content.@each').cacheable(),
         createMessage: function() {
-            var message = this.store.createRecord('message', {
+            var applicationController = this.get('controllers.application');
+            var userid = applicationController.getuserid();
+            var blogController = this.get('controllers.blog');
+            blog_id = blogController.getblogid();
+            var message = this.store.createRecord('message', {'author_id': userid, "blog_id": blog_id
             });
             message.set("body", this.get("message"));
+            console.log(message);
             this.set("message", "");
             this.get("content").insertAt(0, message);
             message.save();
