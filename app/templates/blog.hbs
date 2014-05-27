@@ -1,0 +1,26 @@
+<div class="col-md-8">
+    <form role="form">
+        <div class="form-group">
+            <label for="title">Title</label>
+
+            {{model.title}}
+        </div>
+        <div class="form-group">
+            <label for="blog">blog</label>
+            {{{model.formattedHtml }}}
+        </div>
+        <div class="form-group">
+            <label for="Author">Author</label>
+            {{model.displayname }}
+        </div>
+        <div class="form-group">
+            <label for="Author">Last update</label>
+            {{model.gettimeago }}
+        </div>
+    </form>
+
+    <button type="button" class="btn btn-default" {{action "fb_share"}}>share to facebook</button>
+    <button id="wb_publish" type="button">分享到微博</button>
+</div>
+
+{{render "messageBoard"}}

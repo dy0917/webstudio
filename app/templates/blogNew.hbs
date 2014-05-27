@@ -1,0 +1,41 @@
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab"{{action "setWriteSwitch"}}>Write</a></li>
+    <li><a data-toggle="tab" {{action "setWriteSwitch"}}>Preview</a></li>
+
+</ul>
+<!-- Tab panes -->
+<div >
+    {{#if isWriteSwitch}}
+    <div class="tab-pane active" id="write">
+        <div id="postmainbox" style="margin-left:10px; "><div class="postuser"><img/></div>
+            <div class="post right" style="margin:15px">
+                <div class="arrow"></div>
+                <div class="arrow-after"></div>
+                <div class="arrow-before"></div>
+                <h3 class="popover-title">  {{input value=blog.title class="form-control" placeholder="Enter email"}}</h3>
+                {{#view Webstudio.PhotoCreateView}}
+                <div id="dropbox" style="position: relative; margin: 15px auto;height: 520px; width: 510px; background-color: rgba(242,240,240,0.5);">    
+                    <div class="popover-content" style="">
+                        {{view Webstudio.dropBoxTextArea id="txtarea"  value=blog.body}}
+                    </div>
+                </div>
+                <div class="new-btn blue-btn" style="margin: auto;  top: 0; position: relative;left: 0;" >
+                    Attach images by dragging & dropping, <a {{action "printout"}}>selecting them</a>
+
+                </div> 
+                {{/view}}
+            </div>
+
+        </div>
+
+        <button {{action 'submit'}} class="btn btn-default">Submit</button>
+    </div>
+    {{else}}
+
+    <div class="tab-pane" id="Preview">
+        {{{blog.formattedHtml}}}
+
+    </div>
+    {{/if}}
+</div>
+

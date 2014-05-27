@@ -1,0 +1,13 @@
+<div class="col-md-3">
+    
+        <strong>Blogs</strong>
+        <ul class="list-group">
+            {{content.length}}
+            {{#each content}}
+            {{#link-to 'blog' this}}
+            <li> {{title}}</li>
+            {{/link-to}}
+            {{/each}}
+        </ul>
+    
+</div>

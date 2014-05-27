@@ -4,3 +4,7 @@ dist
 .sass-cache
 .tmp
 app/bower_components
+/webapi/nbproject/private/
+/api/nbproject/private/
+/app/api/nbproject/private/
+/nbproject/private/

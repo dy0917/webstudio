@@ -1,0 +1,17 @@
+<div class="col-md-8">
+    <form role="form">
+        <div class="form-group">
+            <label for="message">Say something</label>
+            {{view Webstudio.CheckLoginInputBoxView valueBinding="message"}}
+        </div>
+        <ul>
+            {{#each item in content}}
+
+            <li> {{item.body}}</li>
+
+            {{/each}}
+        </ul>
+    </form>
+
+
+</div>
