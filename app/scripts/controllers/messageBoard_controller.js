@@ -10,7 +10,6 @@ Webstudio.MessageBoardController = Ember.ArrayController.extend({
     sortProperties: ['id'],
     sortAscending: false,
     needs: ["application", "blog"],
-    //  content: [{id: 1, message: "aaaaa"}, {id: 2, message: "svvvv"}, {id: 3, message: "ddddd"}],
     init: function()
     {
         var blogController = this.get('controllers.blog');
@@ -20,14 +19,14 @@ Webstudio.MessageBoardController = Ember.ArrayController.extend({
         var that = this;
         messages.then(function()
         {
-            //   console.log(messages.get("length"));
+            var length = messages.get("length");
             for (var i = 0; i < messages.get("length"); i++)
             {
-                that.get("content").pushObject(messages.objectAt(i));
+
+                that.get("content").pushObject(messages.objectAt(length - 1 - i));
             }
+            //  that.send("reverse");
         });
-
-
     },
     actions: {
         reverse: function() {
@@ -45,26 +44,38 @@ Webstudio.MessageBoardController = Ember.ArrayController.extend({
             this.set("message", "");
             this.get("content").insertAt(0, message);
             message.save();
-        }
-    },
-    sortedContent: (function() {
-        var content;
-        content = this.get("content") || [];
-        return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
-            content: content.toArray(),
-            sortProperties: this.get('sortProperties'),
-            sortAscending: this.get('sortAscending')
-        });
-    }).property("content.@each", 'sortProperties', 'sortAscending'),
-    doSort: function(sortBy) {
-        var previousSortBy;
-        previousSortBy = this.get('sortProperties.0');
-        if (sortBy === previousSortBy) {
-            return this.set('sortAscending', !this.get('sortAscending'));
-        } else {
-            set('sortAscending', true);
-            return this.set('sortProperties', [sortBy]);
+        },
+        checklogin: function() {
+            var applicationController = this.get('controllers.application');
+
+            var loginedUser = applicationController.get("loginedUser");
+            if (loginedUser == null) {
+
+                applicationController.send("switchLogin");
+                var inputbox = document.getElementById("input_message");
+                inputbox.blur();
+            }
         }
     }
+
+//    sortedContent: (function() {
+//        var content;
+//        content = this.get("content") || [];
+//        return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+//            content: content.toArray(),
+//            sortProperties: this.get('sortProperties'),
+//            sortAscending: this.get('sortAscending')
+//        });
+//    }).property("content.@each", 'sortProperties', 'sortAscending'),
+//    doSort: function(sortBy) {
+//        var previousSortBy;
+//        previousSortBy = this.get('sortProperties.0');
+//        if (sortBy === previousSortBy) {
+//            return this.set('sortAscending', !this.get('sortAscending'));
+//        } else {
+//            set('sortAscending', true);
+//            return this.set('sortProperties', [sortBy]);
+//        }
+//    }
 
 });

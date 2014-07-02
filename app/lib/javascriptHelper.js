@@ -106,7 +106,7 @@ function getImageWidth(imgSrc, callback) {
 
 }
 
-function requiredBackEnd(controller, method, para, ajaxType, callback) {
+function requiredBackEnd(controller, method, para, ajaxType, callback, error) {
     {
         var tempurl = getRestAPIURL();
 
@@ -116,8 +116,9 @@ function requiredBackEnd(controller, method, para, ajaxType, callback) {
             data: JSON.stringify(para),
             success: function(feedback) {
                 callback(feedback);
-            }, error: function()
+            }, error: function(feedback)
             {
+                error(feedback);
                 console.log("post back error");
             }
 

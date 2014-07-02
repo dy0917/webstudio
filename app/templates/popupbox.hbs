@@ -1,0 +1,25 @@
+
+<div style="background:rgba(0,0,0,0.5);
+     position:absolute;
+     top:0px;
+     left:0px;
+     width:100%;
+     height:100%;
+     overflow:auto;">   
+
+
+    <div class="container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"{{action "switchLogin"}}>&times;</button>
+            </div>
+            <div id="CollapseLogin" class="Collapseheader" {{action "Collapse" "#CollapseLogin" target="view"}}>   <h4 class="modal-title" id="myModalLabel">Login</h4></div>
+            {{render "loginform"}}
+
+            <div id="CollapseRegister" class="Collapseheader" {{action "Collapse" "#CollapseRegister" target="view"}}><h4 class="modal-title" id="myModalLabel">Register</h4></div>
+
+            {{render "registerform"}}
+        </div>
+    </div>
+</div>
+

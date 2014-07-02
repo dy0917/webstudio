@@ -20,8 +20,9 @@ Webstudio.ApplicationController = Ember.Controller.extend({
         logout: function() {
             var that = this;
             requiredBackEnd("site", "logout", '{"logout":"' + that.get("loginSession") + '"}', "post", function(params) {
+                that.set("loginedUser", null);
                 that.set("islogin", false);
-            });
+            }, null);
         },
         switchLogin: function() {
 
@@ -38,7 +39,7 @@ Webstudio.ApplicationController = Ember.Controller.extend({
                         that.set("loginedUser", user);
                         that.set("islogin", true);
                     }
-                });
+                }, null);
             } else {
                 console.log("dont have session_id");
             }

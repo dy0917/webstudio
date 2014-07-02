@@ -9,7 +9,7 @@ Webstudio.BlogNewRoute = Ember.Route.extend({
     
     model: function () {
         
-          var blog=   this.store.createRecord('blog', {
+          var blog= this.store.createRecord('blog', {
             });
   
         return blog;

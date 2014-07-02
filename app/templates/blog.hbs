@@ -1,8 +1,16 @@
 <div class="col-md-8">
+    {{#if isAlert}}
+    {{render "alertBox"}}
+    {{/if}}
     <form role="form">
         <div class="form-group">
+            {{#if isAuthor}}
+            <a class="btn btn-primary" {{action "editClick" this}}>edit</a>
+            <button  type="button" class="btn btn-danger" {{action "setIsAlert"}}>delete</button>
+            {{/if}}
+        </div>
+        <div class="form-group">
             <label for="title">Title</label>
-
             {{model.title}}
         </div>
         <div class="form-group">
@@ -19,8 +27,8 @@
         </div>
     </form>
 
-    <button type="button" class="btn btn-default" {{action "fb_share"}}>share to facebook</button>
-    <button id="wb_publish" type="button">分享到微博</button>
+    <button type="button" class="btn btn-default" {{action "fb_share"}}>share to facebook</button>    
+ <!--   <wb:publish button_type="gray" button_size="big" button_text="分享到微博" ></wb:publish>-->
 </div>
 
 {{render "messageBoard"}}
