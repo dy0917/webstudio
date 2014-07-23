@@ -1,3 +1,0 @@
-Webstudio.Router.map(function () {
-  
-});
