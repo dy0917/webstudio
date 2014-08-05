@@ -73,7 +73,6 @@ class BlogsController extends Controller {
             $model->save(false);
             $this->sendResponse(204);
         } else {
-
             $this->sendResponse(500);
         }
     }
