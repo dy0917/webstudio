@@ -1,7 +1,7 @@
 /*
   Slidemenu
 */
-(function() {
+$(document).ready(function() {
 	var $body = document.body
 	, $menu_trigger = $body.getElementsByClassName('menu-trigger')[0];
 
@@ -11,4 +11,4 @@
 		});
 	}
 
-}).call(this);
+});
