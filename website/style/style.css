@@ -54,13 +54,13 @@ h1, h2, h3, h4 {
   padding: 0 16px;
   border: 0;
   outline: 0;
-  color: #8e8e8c;
+  color: rgba(255, 255, 255, 0.88);
   background: transparent;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid #dededc;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   vertical-align: bottom;
   white-space: nowrap;
   text-rendering: optimizeLegibility;
@@ -86,6 +86,9 @@ h1, h2, h3, h4 {
   -o-transition: all 300ms;
   -webkit-transition: all 300ms;
   transition: all 300ms; }
+  .btn:hover, .btn active, .btn focus {
+    color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.3); }
 
 .nav-tabs {
   padding-bottom: 0;
@@ -209,6 +212,7 @@ div#content {
     left: 10px;
     width: 44px;
     height: 44px;
+    line-height: 55px;
     z-index: 700;
     text-align: center;
     background: #151515;
@@ -226,7 +230,6 @@ div#content {
     transition: top 0.2s linear, left 0.2s linear, opacity 0.2s linear; }
     div#content div.menu-trigger img.nav-icon {
       width: 20px;
-      top: 1px;
       position: relative; }
     div#content div.menu-trigger:hover {
       opacity: 0.7;
@@ -279,10 +282,6 @@ body.menu-active div#content .menu-trigger {
   position: absolute;
   top: 0;
   height: 65px; }
-
-.hero-logo {
-  width: 200px;
-  margin-bottom: 20px; }
 
 .hero {
   text-align: center;
@@ -414,7 +413,7 @@ body.menu-active div#content .menu-trigger {
 
 /*=================layout=================*/
 .layout-single-column {
-  width: 640px;
+  width: 80%;
   margin: 0 auto; }
 
 .layout-fill-height {
@@ -423,11 +422,6 @@ body.menu-active div#content .menu-trigger {
 .layout-foreground {
   position: relative;
   z-index: 100; }
-
-.layout-single-column, .layout-multi-column, .post-article .layout-single-column, .logged-out-post-footer .layout-single-column {
-  width: auto;
-  margin-left: 20px;
-  margin-right: 20px; }
 
 /*=================layout END=================*/
 /*=================alignment=================*/
@@ -446,3 +440,20 @@ body.menu-active div#content .menu-trigger {
   height: 100%; }
 
 /*=================alignment END=================*/
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  .layout-single-column {
+    width: auto; }
+
+  .btn {
+    height: 32px;
+    line-height: 31px;
+    font-size: 14px;
+    padding: 0 14px; }
+
+  .metabar .btn-set {
+    line-height: 32px;
+    margin: 8px; } }
+/* Landscape phone to portrait tablet */
+/* Portrait tablet to landscape and desktop */
+/* Large desktop */
