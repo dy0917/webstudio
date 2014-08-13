@@ -65,11 +65,22 @@
 
 
 
+  .clearfix{
+  	&:after {
+  		content: "";
+  		display: table;
+  		clear: both;
+  	}
+  }
+
+
+
+
 // ==================BTN==================
 
 
 .btn-set{
-	margin: 10px;
+	margin: 0 10px;
 	line-height: 44px;
 	display: inline-block;
 	white-space: nowrap;
@@ -257,20 +268,26 @@ body.menu-active nav#slide-menu ul { left: 0px; opacity: 1; }
   		}
   	}
 
-  	body.menu-active div#content { left: 284px; border-radius: 7px 0 0 7px; }
+  	body.menu-active div#content { left: 284px;}
   	body.menu-active div#content .menu-trigger { left: 294px; }
+  	body.menu-active div.site-nav-overlay { left: 284px; display:block;}
 
 
 
   	.site-nav-overlay{
   		display: none;
   		position: fixed;
-  		left: 0;
+  		left: 284px;
   		top: 0;
   		right: 0;
   		bottom: 0;
   		z-index: 600;
+  		// background-color: rgba(255,255,255,.4);
+
+  		@include transition(cubic-bezier(.2, .3, .25, .9) .2s );
   	}
+
+
 
 // ==========================slide-menu END================================
 
@@ -498,7 +515,7 @@ body.menu-active nav#slide-menu ul { left: 0px; opacity: 1; }
 
 /* Landscape phones and down */
 
-@media (max-width: 480px) { 
+@media (max-width: 530px) { 
 	.layout-single-column{
 		width: auto;
 	}
