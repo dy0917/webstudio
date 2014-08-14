@@ -73,7 +73,7 @@ class SiteController extends Controller {
         $this->clearExpireSession();
 
         $temp_request = $this->getClientPost();
-
+      //  error_log(var_export($temp_request, true));
         $request = CJSON::decode($temp_request, true);
 
         $identity = new UserIdentity($request['email'], $request['password']);
@@ -114,7 +114,7 @@ class SiteController extends Controller {
 
     public function actionRead() {
 
-        // echo "this is for testing";
+        echo "this is for testing";
     }
 
     private function getSessionVarByName($name, $strSession) {
@@ -128,6 +128,11 @@ class SiteController extends Controller {
         $strtemp = explode(':', $tempval)[2];
         $strtemp = str_replace('"', "", $strtemp);
         return $strtemp;
+    }
+
+    public function actionTest() {
+
+        echo "this is for testing";
     }
 
 }

@@ -3,8 +3,7 @@
 Webstudio.store = DS.Store.create({
   
     adapter: DS.RESTAdapter.create({
-        bulkCommit: false,
-        url: getRestAPIURL()
+        bulkCommit: false
 
     })
 });
