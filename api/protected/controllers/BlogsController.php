@@ -20,8 +20,9 @@ class BlogsController extends Controller {
 //        $criteria->join = 'INNER JOIN user ON (t.author_id=author.id)';
         // $criteria = new CDbCriteria;
         //  $criteria->join = 'INNER JOIN user ON (t.author_id=user.id)';
-        $models = Blog::model()->with('author')->together()->findAll();
-
+        $Criteria = new CDbCriteria();
+        $Criteria->condition = "isDelete = 0";
+        $models = Blog::model()->with('author')->together()->findAll($Criteria);
         $json = $this->arrtoJson(self::JSON_RESPONSE_ROOT_PLURAL, $models);
         $this->sendResponse(200, $json);
     }
@@ -66,9 +67,6 @@ class BlogsController extends Controller {
         $temp = explode("/", $_SERVER['REQUEST_URI']);
         $id = $temp [sizeof($temp) - 1];
         $model = Blog::model()->findByPk($id);
-
-
-
         $model->setAttributes($blog);
 
         if ($model->validate()) {
@@ -83,8 +81,16 @@ class BlogsController extends Controller {
     public function actionDelete() {
         $temp = explode("/", $_SERVER['REQUEST_URI']);
         $id = $temp [sizeof($temp) - 1];
-        $post = Blog::model()->findByPk($id); // assuming there is a post whose ID is 10
-        $post->delete();
+        $model = Blog::model()->findByPk($id); // assuming there is a post whose ID is 10
+        $model->isDelete = 1;
+        if ($model->validate()) {
+            $model->save();
+            $this->sendResponse(204);
+        } else {
+
+            $this->sendResponse(500);
+        }
+        //   $post->delete();
     }
 
     public function actionTest() {

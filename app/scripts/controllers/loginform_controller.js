@@ -5,25 +5,26 @@
  */
 
 
-Webstudio.LoginController = Ember.Controller.extend({
+Webstudio.LoginformController = Ember.Controller.extend({
     username: "",
     password: "",
     needs: ["application"],
     isError: false,
     isProcessing: false,
     btnlogin: "",
+    registerErrorMessage: [],
     actions: {
         login: function()
         {//btn spinner start
-            var that = this;
-
-            this.send("setLoginStatus", true);
-            this.set("isError", false);
-            var that = this;
-            requiredBackEnd("site", "login", '{"email":"' + this.get('username') + '","password":"' + this.get("password") + '"}', "post", function(params) {
-                that.send("afterlogin", params);
-            });
-
+            if (this.get("username") !== "" && this.get("password") !== "") {
+                var that = this;
+                this.send("setProcessingStatus", "btnlogin", true);
+                this.set("isError", false);
+                var that = this;
+                requiredBackEnd("site", "login", '{"email":"' + this.get('username') + '","password":"' + this.get("password") + '"}', "post", function(params) {
+                    that.send("afterlogin", params);
+                });
+            }
         },
         afterlogin: function(feedback) {
             var lbtnlogin = Ladda.create(this.get("btnlogin"));
@@ -33,12 +34,12 @@ Webstudio.LoginController = Ember.Controller.extend({
             if (objfeeback.error === "ERROR_USERNAME_INVALID")
             {
                 this.set("isError", true);
-                this.send("setLoginStatus", false);
+                this.send("setProcessingStatus", "btnlogin", false);
             }
             else if (objfeeback.error === "ERROR_PASSWORD_INVALID")
             {
                 this.set("isError", true);
-                this.send("setLoginStatus", false);
+                this.send("setProcessingStatus", "btnlogin", false);
             }
             else
             {//login sucessful
@@ -46,7 +47,6 @@ Webstudio.LoginController = Ember.Controller.extend({
                 applicationController.set("loginSession", objfeeback.session_id);
                 setCookie("session_id", objfeeback.session_id);
                 this.send("setUserByID", objfeeback.id);
-
             }
         },
         closewindow: function()
@@ -56,10 +56,10 @@ Webstudio.LoginController = Ember.Controller.extend({
             this.set("password", "");
             applicationController.send("switchLogin");
         },
-        setLoginStatus: function(bool)
+        setProcessingStatus: function(btn_id, bool)
         {
 
-            this.set("btnlogin", document.getElementById('btnlogin'));
+            this.set("btnlogin", document.getElementById(btn_id));
             var lbtnlogin = Ladda.create(this.get("btnlogin"));
             if (bool) {
                 lbtnlogin.start();
@@ -70,7 +70,7 @@ Webstudio.LoginController = Ember.Controller.extend({
         },
         fb_login: function() {
             var that = this;
-            this.send("setLoginStatus", true);
+            this.send("setProcessingStatus", "btnlogin", true);
             FB.getLoginStatus(function(response) {
                 if (response.status === 'connected') {
                     that.send("getFacebookUser");
@@ -88,7 +88,6 @@ Webstudio.LoginController = Ember.Controller.extend({
                     });
                 }
             });
-
         }, createNewAccount: function(response)
         {
             var user = this.store.createRecord('user', {displayname: response.name, social_media_id: response.id
@@ -100,7 +99,7 @@ Webstudio.LoginController = Ember.Controller.extend({
                 applicationController.set("loginedUser", user);
                 applicationController.set("islogin", true);
                 applicationController.send("switchLogin");
-                that.send("setLoginStatus", false);
+                that.send("setProcessingStatus", "btnlogin", false);
             });
         }, setUserByID: function(userid)
         {
@@ -111,10 +110,9 @@ Webstudio.LoginController = Ember.Controller.extend({
                 applicationController.set("loginedUser", user);
                 applicationController.set("islogin", true);
                 applicationController.send("switchLogin");
-                that.send("setLoginStatus", false);
+                that.send("setProcessingStatus", "btnlogin", false);
                 that.set("username", "");
                 that.set("password", "");
-
             });
         }, getFacebookUser: function() {
             var that = this;
@@ -131,10 +129,5 @@ Webstudio.LoginController = Ember.Controller.extend({
                 });
             }, {scope: 'email'});
         }
-
-
-
     }
-
-
 });

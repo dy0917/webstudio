@@ -5,6 +5,9 @@ Webstudio.MessageBoardView = Ember.View.extend({
             this.get('controller').send("createMessage");
 
         }
+    },
+    click: function(e) {
+        this.get('controller').send('checklogin');
     }
 });
 

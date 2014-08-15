@@ -35,25 +35,25 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div id="loadingProgressG">
-        <div id="loadingProgressG_1" class="loadingProgressG">
-        </div>
-    </div>
-    <div class="container" id="main">
-        <div class="row">
-            <div>
+    <!--  <div id="loadingProgressG">
+          <div id="loadingProgressG_1" class="loadingProgressG">
+          </div>-->
+</div>
+<div class="container" id="main">
+    <div class="row">
+        <div>
 
-                <div class="col-md-9">
-                    {{outlet}}
+            <div class="col-md-9">
+                {{outlet}}
 
-                </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 
 {{#if isloginclick}}
-{{render "login"}}
+{{render "popupbox"}}
 
 {{/if}}
 

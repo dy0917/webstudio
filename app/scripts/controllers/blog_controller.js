@@ -6,11 +6,17 @@
 
 
 Webstudio.BlogController = Ember.Controller.extend({
+    isAuthor: false,
+    isAlert: false,
+    needs: ["application"],
+    model: "",
     actions: {
+        config: function() {
+            this.send("setIsAuthor");
+        },
         fb_share: function()
         {
             var model = this.get("model");
-            console.log(this.get("model").get("title"));
             FB.ui(
                     {
                         method: 'feed',
@@ -29,13 +35,37 @@ Webstudio.BlogController = Ember.Controller.extend({
             }
             );
 
+        },
+        editClick: function(blog)
+        {
+            this.transitionToRoute('blogEdit', blog);
+        }
+        , setIsAuthor: function()
+        {
+            var applicationController = this.get('controllers.application');
+            var userid = applicationController.getuserid();
+
+            var model = this.get("model");
+            this.set("isAuthor", (model.get("author_id") == userid));
+        },
+        setIsAlert: function()
+        {
+            this.set("isAlert", !this.get("isAlert"));
+
+        }, execute: function()
+        {
+            var model = this.get("model");
+            var that = this;
+            model.deleteRecord();
+            model.save().then(function() {
+                that.send("setIsAlert");
+                that.transitionToRoute('blogs');
+            });
         }
     },
     getblogid: function()
     {
         return this.get("model").get("id");
     }
-
-
 
 });

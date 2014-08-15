@@ -19,7 +19,7 @@ class UsersController extends Controller {
         $request = $this->getClientPost();
         $user = $request[self::JSON_RESPONSE_ROOT_SINGLE];
         $user_model = new User;
-        //  $user_model->setAttributes($user);
+//  $user_model->setAttributes($user);
         $user_model->displayname = $user["displayname"];
         if ($user_model->validate()) {
             $user_model->save();
@@ -67,14 +67,40 @@ class UsersController extends Controller {
         if (isset($reponse) && $reponse != "") {
 
             echo $reponse->attributes["user_id"];
-           // $this->sendResponse(200, $reponse->attributes["user_id"]);
+// $this->sendResponse(200, $reponse->attributes["user_id"]);
         } else {
             echo "ID_NOT_FOUND";
-           // $this->sendResponse(200, "ID_NOT_FOUND");
+// $this->sendResponse(200, "ID_NOT_FOUND");
         }
     }
 
-    private function createAccoutWithSocialLogin() {
+    public function actionCreatewithoutSocialMedia() {
+
+        $request = $this->getClientPost();
+        $arr_user = json_decode($request, true);
+
+        $record = User::model()->find(array(
+            'condition' => 'email=:email',
+            'params' => array(':email' => $arr_user["email"]))
+        );
+
+        if (is_null($record)) {
+            $user_model = new User;
+            $user_model->setAttributes($arr_user);
+
+            if ($user_model->validate()) {
+                $user_model->save();
+                $this->sendResponse(204);
+            } else {
+                $this->sendResponse(500);
+            }
+        } else {
+              $this->sendResponse(200,"EMAIL_REGISTERED");
+        }
+    }
+
+    private
+            function createAccoutWithSocialLogin() {
         
     }
 

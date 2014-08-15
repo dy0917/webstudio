@@ -8,11 +8,13 @@
 Webstudio.BlogNewController = Ember.Controller.extend({
     blog: "",
     isWriteSwitch: true,
-    actions: {
-        init: function()
+    needs: ["application"],
+      init: function()
         {
 
         },
+    actions: {
+      
         setModel: function(model)
 
         {
@@ -29,6 +31,9 @@ Webstudio.BlogNewController = Ember.Controller.extend({
         submit: function()
         {
             var that = this;
+            var applicationController = this.get('controllers.application');
+            var userid = applicationController.getuserid();
+            this.get("blog").set("author_id", userid);
             this.blog.save().then(function() {
                 that.set('blog', null);
                 that.transitionToRoute('blogs');
@@ -36,6 +41,6 @@ Webstudio.BlogNewController = Ember.Controller.extend({
             });
 
         }
-       
+
     }
 });
