@@ -12,6 +12,15 @@
                         <h3 class="post-item-title">{{#link-to 'blog' this}}{{title}}  {{/link-to}}</h3>
                         <a class="post-item-snippet" >
                             <p>{{subTitle}}</p>
+                                  {{#if isImageUrl}}
+
+                   {{imageUrl}}
+                        {{else}}
+
+                                {{getImageUrl}}
+                        {{/if}}
+                            
+                        
                         </a>
                         <span class="post-meta post-meta-author-collection">
                             <a class="post-meta post-meta-author link link-secondary" >
