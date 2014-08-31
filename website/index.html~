@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scars</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="js/script.js"></script>
+
+</head>
+<body id="body">
+<!-- Navigation -->
+<nav id="slide-menu">
+	<ul>
+		<li class="timeline">Timeline</li>
+		<li class="events">Events</li>
+		<li class="calendar">Calendar</li>
+		<li class="sep settings">Settings</li>
+		<li class="logout">Logout</li>
+	</ul>
+</nav>
+<!-- Content panel -->
+<div id="content">
+	<div class="menu-trigger"></div>
+	<h1>iOS style sliding menu</h1>
+	<p>Here's an easy way to create an iOS style, side sliding menu.</p>
+</div>
+
+
+
+</body>

@@ -11,7 +11,7 @@ Webstudio.Blog = DS.Model.extend({
     displayname: DS.attr('string', {defaultValue: ""}),
     created: DS.attr('string', {defaultValue: ""}),
     last_update: DS.attr('string', {defaultValue: ""}),
-    imageUrl: DS.attr('string', {defaultValue: ""}),
+    imageurl: DS.attr('string'),
     gettimeago: function()
     {
         return jQuery.timeago(this.get("last_update"));
@@ -26,5 +26,18 @@ Webstudio.Blog = DS.Model.extend({
     getCurrentUrl: function()
     {
         return document.URL;
-    }.property('id')
+    }.property('id'),
+    getInitialName: function() {
+
+    
+
+
+    }.property('imageurl'),
+    isImageUrl: function() {
+
+
+        return isImageExists(this.get('imageurl'));
+
+    }.property('imageurl')
+
 });

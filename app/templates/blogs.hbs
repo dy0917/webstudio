@@ -1,13 +1,45 @@
-<div class="col-md-3">
+<div>
     
-        <strong>Blogs</strong>
-        <ul class="list-group">
-            {{content.length}}
-            {{#each content}}
-            {{#link-to 'blog' this}}
-            <li> {{title}}</li>
-            {{/link-to}}
-            {{/each}}
-        </ul>
-    
+                    {{#each content}}
+                   <ul class="bucket-posts">
+                <li class="bucket-item">
+                    <div class="post-item post-item-connections post-status-">
+                        <div>
+                            <span class="post-meta">
+                                <a >Top 100</a>
+                            </span>
+                        </div>
+                        <h3 class="post-item-title">{{#link-to 'blog' this}}{{title}}  {{/link-to}}</h3>
+                        <a class="post-item-snippet" >
+                            <p>{{subTitle}}</p>
+                                  {{#if isImageUrl}}
+
+                   {{imageUrl}}
+                        {{else}}
+
+                                {{getImageUrl}}
+                        {{/if}}
+                            
+                        
+                        </a>
+                        <span class="post-meta post-meta-author-collection">
+                            <a class="post-meta post-meta-author link link-secondary" >
+                                <img src="https://d262ilb51hltx0.cloudfront.net/fit/c/64/64/0*98w1Lsjzk2M6bqWf.jpeg" class="avatar-icon post-meta-avatar post-meta-avatar-author" >
+                                <span>{{displayname}}</span>
+                            </a>
+                            <span class="post-meta post-meta-collection"> in 
+                                <a title="Go to Culture Club" class="link link-secondary">{{type}}</a>
+                            </span>
+                        </span>
+                        <span class="post-meta post-meta-bookmark">
+                            <span class="reading-list-status" >
+                                <span class="icons icons-reading-list no-user-select"></span>
+                                <span class="reading-list-status-message">Bookmark</span>
+                                <span class="reading-time">9 min read</span>
+                            </span>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+                {{/each}}
 </div>

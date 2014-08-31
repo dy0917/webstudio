@@ -13,7 +13,6 @@ class BlogsController extends Controller {
 
     public function actionIndex() {
 
-
 //        $criteria = new CDbCriteria;
 //        $criteria->select = 'author.diplayname, author.imageurl'; // select fields which you want in output
 //        $criteria->condition = 't.author_id = author.id';
@@ -73,7 +72,6 @@ class BlogsController extends Controller {
             $model->save(false);
             $this->sendResponse(204);
         } else {
-
             $this->sendResponse(500);
         }
     }

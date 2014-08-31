@@ -94,7 +94,7 @@ class User extends CActiveRecord {
     }
 
     public function validatePassword($password) {
-        error_log($this->password);
+  
         return $this->password == $password;
     }
 

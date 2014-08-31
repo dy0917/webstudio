@@ -8,7 +8,6 @@ Webstudio.CheckLoginInputBoxView = Ember.TextField.extend({
     },
     click: function(e) {
       //  var controller = this.get('controller');
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
               this.get('controller').send('turnItUp', 11);
        // controller.test;
         //    this.test();
