@@ -31,9 +31,18 @@
     line-height: 1.4;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+
+    overflow: hidden;
   }
 
-  
+  *,
+  *:after,
+  *:before {
+    @include box-sizing(border-box);
+  }
+
+
+
   a{
     color: inherit;
     text-decoration: none;
@@ -183,29 +192,89 @@ nav#slide-menu {
     @include transition(all 300ms);
 
     .siteNavList-item{
-      position:relative;
-
-      .siteNavList-button{
-        font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
-        letter-spacing: -0.02em;
-        font-weight: 400;
-        font-style: normal;
-        display: block;
-        padding: 0 16px 0 52px;
-        height: 48px;
-        line-height: 46px;
-        font-size: 16px;
-        border: 0;
-        background: rgba(0,0,0,0);
-        text-align: left;
-      }
+      .siteNavList-button{}
     }
+
     .siteNavList-item--home{margin-top:10px;}
   }
 }
 
+    .siteNavList-item{position:relative;}
+
 #body.menu-active nav#slide-menu { left: 0px; }
 #body.menu-active nav#slide-menu ul { left: 0px; opacity: 1; }
+
+.siteNavList-button{
+  font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-style: normal;
+  display: block;
+  padding: 0 16px 0 52px;
+  height: 48px;
+  line-height: 46px;
+  font-size: 16px;
+  border: 0;
+  color:rgba(255,255,255,0.65);
+  background: rgba(0,0,0,0);
+  text-align: left;
+
+  .icon{
+    font-size: 20px;
+    display: block;
+    position: absolute;
+    left: 18px;
+    top: -1px;
+    width: 20px;
+    text-align: center;
+    line-height:46px;
+  }
+
+  .avatar{
+    position: absolute;
+    left: 16px;
+    top: 10px;}
+
+  }
+
+  .siteNavList-button--secondary{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0 16px 0 6px;
+
+    .icon{
+      line-height: 48px;
+      font-size: 20px;
+    }
+  }
+
+
+  .avatar{
+    display: block;
+    background-position: center;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 65px;
+    height: 65px;
+    line-height: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  }
+
+  .avatar--micro{
+    width: 24px;
+    height: 24px;
+  }
+
+
+
 
 /*
   Content
