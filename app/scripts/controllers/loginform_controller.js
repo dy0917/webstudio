@@ -8,7 +8,7 @@
 Webstudio.LoginformController = Ember.Controller.extend({
     username: "",
     password: "",
-    needs: ["application"],
+    needs: ["application", 'siteNav'],
     isError: false,
     isProcessing: false,
     btnlogin: "",
@@ -27,7 +27,7 @@ Webstudio.LoginformController = Ember.Controller.extend({
             }
         },
         afterlogin: function(feedback) {
-            var lbtnlogin = Ladda.create(this.get("btnlogin"));
+            // var lbtnlogin = Ladda.create(this.get("btnlogin"));
             var feedback = JSON.stringify(feedback);
             var objfeeback = JSON.parse(feedback);
             var that = this;
@@ -45,6 +45,8 @@ Webstudio.LoginformController = Ember.Controller.extend({
             {//login sucessful
                 var applicationController = this.get('controllers.application');
                 applicationController.set("loginSession", objfeeback.session_id);
+                var siteNavController = this.get('controllers.siteNav');
+                siteNavController.set("islogin", true);
                 setCookie("session_id", objfeeback.session_id);
                 this.send("setUserByID", objfeeback.id);
             }

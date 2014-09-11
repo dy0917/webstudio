@@ -12,6 +12,7 @@ Webstudio.ApplicationController = Ember.Controller.extend({
     loginSession: null,
     islogin: false,
     isloginclick: false,
+    needs: ['siteNav'],
     actions: {
         init: function()
         {
@@ -38,6 +39,8 @@ Webstudio.ApplicationController = Ember.Controller.extend({
                         var user = that.store.find('user', params);
                         that.set("loginedUser", user);
                         that.set("islogin", true);
+                        var siteNavController = that.get('controllers.siteNav');
+                        siteNavController.set("islogin", true);
                     }
                 }, null);
             } else {

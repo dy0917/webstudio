@@ -8,8 +8,11 @@
         <div class="overlay-actions">
 
             <div class="list-itemInfo" style="width: 400px; margin: 20px auto; ">
-                <input class="list-itemInput js-emailSettingsInput" type="email" placeholder="Your email">
-                <input class="list-itemInput js-emailSettingsInput" type="email" placeholder="Your Password">
+                {{input type="email" value=username class="form-control" placeholder="Enter email"}}
+
+                {{input type="password" value=password class="form-control" placeholder="Password"}}
+                   <button id="btnlogin"  data-style="expand-right" {{action "login"}}><span class="ladda-label">Login</span><span class="ladda-spinner"></span><span class="ladda-spinner"></span></button>
+
             </div>
 
             <div class="btn-set--vertical signin-auth-choices">

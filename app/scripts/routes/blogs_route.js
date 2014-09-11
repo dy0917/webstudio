@@ -4,17 +4,17 @@ Webstudio.BlogsRoute = Ember.Route.extend({
 
     setupController: function(controller, arr) {
 
-        // this.store.find('blog');
-        // var blogs = this.store.filter('blog', function(blog) {
-        //     return blog.get('id') !== null;
-        // });
+       // this.store.find('blog');
+        var blogs = this.store.filter('blog', function(blog) {
+            return blog.get('id') !== null;
+        });
 
-        // controller.set('content', blogs);
+        controller.set('content', blogs);
 
     },
     model: function() {
 
-        var blogs = null;
+        var blogs = this.store.find('blog');
 
         return blogs;
     },
