@@ -1,7 +1,9 @@
+<div id="spinnerDiv" class="la-anim-1" style=" z-index: 100; "></div>
+
 <div id="body">
 
 
-{{render "siteNav"}}
+    {{render "siteNav"}}
 
 
     <!-- =============for exit nav menu (transparent)============ -->
@@ -32,7 +34,9 @@
 
                         <li><button class="btn btn-default" {{action "switchLogin"}} >login</button></li>
                         {{/if}}
-                        <li><button data-anim="la-anim-1">YouTube</button></li>
+                        <div id="la-buttons">
+                            <button data-anim="la-anim-1" {{action "spinnertest"}} >YouTube</button>
+                        </div>
 
                     </ul>
                 </div>
@@ -60,19 +64,19 @@
         <!--  <div id="loadingProgressG">
               <div id="loadingProgressG_1" class="loadingProgressG">
               </div>-->
-            <main class="bucket layout-single-column">
-        <ul class="bucket-posts">
-            <li class="bucket-item">
-                <div class="post-item post-item-connections post-status-">
+        <main class="bucket layout-single-column">
+            <ul class="bucket-posts">
+                <li class="bucket-item">
+                    <div class="post-item post-item-connections post-status-">
 
-                    <div class="col-md-9">
-                        {{outlet}}
+                        <div class="col-md-9">
+                            {{outlet}}
 
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </main>
+                </li>
+            </ul>
+        </main>
     </div>
 
 </div>

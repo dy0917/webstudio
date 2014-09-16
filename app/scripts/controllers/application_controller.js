@@ -12,7 +12,7 @@ Webstudio.ApplicationController = Ember.Controller.extend({
     loginSession: null,
     islogin: false,
     isloginclick: false,
-    needs: ['siteNav'],
+    needs: ['siteNav', 'spinner'],
     actions: {
         init: function()
         {
@@ -46,6 +46,10 @@ Webstudio.ApplicationController = Ember.Controller.extend({
             } else {
                 console.log("dont have session_id");
             }
+        },
+        spinnertest: function() {
+            var spinnerController = this.get('controllers.spinner');
+            spinnerController.send("toggleSpinner");
         }
     }
     ,

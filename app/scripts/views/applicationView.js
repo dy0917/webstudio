@@ -5,7 +5,7 @@ Webstudio.ApplicationView = Ember.View.extend({
             //  var controller = this.get('controller');
         
       $("#body").toggleClass("menu-active");
-          console.log("asdfasdfa");
+          
             // controller.test;
             //    this.test();
         }}
